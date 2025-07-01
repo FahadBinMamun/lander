@@ -177,10 +177,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Ensure loading screen is hidden when DOM is ready or fully loaded
+    // DOMContentLoaded এর পরে লোডিং স্ক্রিন লুকানোর চেষ্টা করুন
+    // এটি CSS এবং HTML লোড হওয়ার পরেই কাজ করবে
     document.addEventListener('DOMContentLoaded', hideLoadingScreen);
+
+    // window.load ইভেন্টের জন্য অপেক্ষা করুন (সব ছবি, স্ক্রিপ্ট লোড হওয়ার পর)
+    // এটি নিশ্চিত করবে যে সব সম্পদ লোড হয়েছে
     window.addEventListener('load', hideLoadingScreen);
 
-    // Fallback: hide after a short delay in case DOMContentLoaded or load is missed/delayed
+    // ফলব্যাক হিসেবে একটি setTimeout যোগ করুন যাতে যদি কোনো ইভেন্ট কাজ না করে,
+    // তবে একটি নির্দিষ্ট সময় পর লোডিং স্ক্রিনটি লুকানো হয়।
+    // এটি একটি চূড়ান্ত সুরক্ষামূলক ব্যবস্থা।
     setTimeout(hideLoadingScreen, 3500);
 });
