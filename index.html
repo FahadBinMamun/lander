@@ -3,43 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- টাইটেল আপডেট করা হয়েছে -->
     <title>ICT Portal by ALPCG</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/index.css?v=20250527-2">
-    <!-- Poppins ফন্টটি আপনার বিদ্যমান ফন্টগুলোর সাথে যোগ করা হয়েছে -->
     <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:wght@400;700&family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- 
-        নতুন সংযোজন: লোডিং স্ক্রিন।
-        এটি <body> ট্যাগের একদম শুরুতেই যোগ করা হয়েছে।
-    -->
     <div id="loading-screen">
         <div class="loader"></div>
         <p>লোড হচ্ছে... অনুগ্রহ করে অপেক্ষা করুন</p>
     </div>
 
-    <!-- 
-        আপনার দেওয়া ডিজাইন অনুযায়ী সাইডবার টগল করার জন্য একটি হিডেন চেক-বক্স।
-        এটি CSS দ্বারা সাইডবার নিয়ন্ত্রণ করবে।
-        এটি <body> ট্যাগের ঠিক পরেই, লোডিং স্ক্রিনের পরে যোগ করা হয়েছে।
-    -->
     <input type="checkbox" id="check">
 
-    <!-- 
-        আপনার দেওয়া নতুন ডিজাইনের 'sidebar_menu' এর কাঠামো।
-        লোগো, ক্লোজ বাটন, মেনু লিঙ্ক এবং সোশ্যাল মিডিয়া লিঙ্ক সহ।
-        আপনার সাইটের লিঙ্কগুলো (যেমন index.html, python_course_landing.html) এখানে আপডেট করা হয়েছে।
-    -->
     <div class="sidebar_menu">
         <div class="logo">
             <a href="index.html">ICT Portal By ALPCG</a>
-            <!-- 
-                এখানে আপনি চাইলে একটি লোগো ইমেজও যোগ করতে পারেন:
-                <img src="path/to/your/logo.png" alt="Portal Logo">
-            -->
         </div>
         <div class="btn_two">
             <label for="check">
@@ -65,23 +45,13 @@
         </div>
     </div>
 
-    <!-- 
-        আপনার সাইটের মূল কন্টেন্ট (হেডার, মেইন, ফুটার) এখন এই 'content-wrapper' div এর ভেতরে থাকবে।
-        যখন সাইডবার খুলবে, তখন এই পুরো অংশটি ডানদিকে সরে যাবে।
-    -->
     <div id="content-wrapper">
         <header>
             <div class="container">
                 <div id="branding">
                     <h1><a href="https://omarkgschool.com" target="_blank" rel="noopener">Omar Kindergarten School & Omar Garten Academy</a></h1>
-                    <!-- হেডার টেক্সট আপডেট করা হয়েছে -->
                     <h2><a href="index.html">ICT Portal By ALPCG</a></h2>
                 </div>
-                <!-- 
-                    সাইডবার খোলার জন্য হ্যামবার্গার আইকন বাটন।
-                    আপনার দেওয়া ডিজাইন অনুযায়ী 'btn_one' ক্লাসের মধ্যে এটি রাখা হয়েছে।
-                    এর অবস্থান CSS দ্বারা হেডারের বামদিকে সেট করা হবে।
-                -->
                 <div class="btn_one">
                     <label for="check">
                         <i class="fas fa-bars"></i>
@@ -170,32 +140,7 @@
                 <p class="footer-note">এই পোর্টালটি শিক্ষার্থীদের আইসিটি শিক্ষাকে আরও সহজ ও কার্যকর করার লক্ষ্যে তৈরি করা হয়েছে।</p>
             </div>
         </footer>
-    </div> <!-- End of content-wrapper -->
-
+    </div>
     <script src="js/index.js?v=20250527-2"></script>
-    <script>
-        // এই নির্দিষ্ট পেজের জন্য লোডিং স্ক্রিন লুকানোর লজিক
-        document.addEventListener('DOMContentLoaded', function() {
-            const loadingScreen = document.getElementById('loading-screen');
-            if (loadingScreen) {
-                loadingScreen.classList.add('hidden');
-                document.body.style.pointerEvents = 'auto'; // নিশ্চিত করুন pointer-events চালু হয়েছে
-            }
-        });
-        window.addEventListener('load', function() {
-            const loadingScreen = document.getElementById('loading-screen');
-            if (loadingScreen) {
-                loadingScreen.classList.add('hidden');
-                document.body.style.pointerEvents = 'auto';
-            }
-        });
-        setTimeout(function() {
-            const loadingScreen = document.getElementById('loading-screen');
-            if (loadingScreen) {
-                loadingScreen.classList.add('hidden');
-                document.body.style.pointerEvents = 'auto';
-            }
-        }, 3500); // 3.5 সেকেন্ড পর লুকান (ফলব্যাক)
-    </script>
 </body>
 </html>
