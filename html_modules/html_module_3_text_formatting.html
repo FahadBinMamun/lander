@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>টপিক ৩: টেক্সট ফরম্যাটিং - ICT Portal by ALPCG</title>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/index.css?v=20250527-2">
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:wght@400;700&family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* এই পেজের জন্য নির্দিষ্ট কিছু স্টাইল - মডিউলগুলোর মতোই থাকবে */
+        .module-content-area {
+            background-color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 102, 204, 0.08);
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .module-content-area h1,
+        .module-content-area h2,
+        .module-content-area h3 {
+            color: #2d4966;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .module-content-area p {
+            font-family: 'Tiro Bangla', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4e6d8c;
+        }
+        .module-content-area ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 15px;
+            color: #4e6d8c;
+        }
+        .module-content-area ul li {
+            margin-bottom: 8px;
+            font-family: 'Tiro Bangla', sans-serif;
+            font-size: 1.05rem;
+        }
+        .code-example {
+            background-color: #f0f8ff;
+            border: 1px solid #cce0ff;
+            border-left: 5px solid #4d94ff;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #333;
+            white-space: pre-wrap;
+        }
+        .back-button-container, .next-button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- লোডিং স্ক্রিন -->
+    <div id="loading-screen">
+        <div class="loader"></div>
+        <p>লোড হচ্ছে... অনুগ্রহ করে অপেক্ষা করুন</p>
+    </div>
+
+    <!-- সাইডবার টগল করার জন্য হিডেন চেক-বক্স -->
+    <input type="checkbox" id="check">
+
+    <!-- সাইডবার মেনু -->
+    <div class="sidebar_menu">
+        <div class="logo">
+            <a href="../index.html">ICT Portal By ALPCG</a>
+        </div>
+        <div class="btn_two">
+            <label for="check">
+                <i class="fas fa-times"></i>
+            </label>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><i class="fas fa-home"></i><a href="../index.html" class="sidebar-link">হোম</a></li>
+                <li><i class="fas fa-python"></i><a href="../python_course_landing.html" class="sidebar-link">পাইথন কোর্স</a></li>
+                <li><i class="fas fa-code"></i><a href="../html_course_landing.html" class="sidebar-link">HTML বেসিক</a></li>
+                <li><i class="fas fa-info-circle"></i><a href="#" class="sidebar-link">আমাদের সম্পর্কে</a></li>
+                <li><i class="fas fa-envelope"></i><a href="#" class="sidebar-link">যোগাযোগ</a></li>
+            </ul>
+        </div>
+        <div class="social_media">
+            <ul>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </ul>
+        </div>
+    </div>
+
+    <!-- মূল কন্টেন্ট র‍্যাপার -->
+    <div id="content-wrapper">
+        <header>
+            <div class="container">
+                <div id="branding">
+                    <h1><a href="https://omarkgschool.com" target="_blank" rel="noopener">Omar Kindergarten School & Omar Garten Academy</a></h1>
+                    <h2><a href="../index.html">ICT Portal By ALPCG</a></h2>
+                </div>
+                <div class="btn_one">
+                    <label for="check">
+                        <i class="fas fa-bars"></i>
+                    </label>
+                </div>
+                <nav></nav>
+            </div>
+        </header>
+
+        <main>
+            <section id="module-detail-section">
+                <div class="container">
+                    <div class="module-content-area">
+                        <h1>টপিক ৩: টেক্সট ফরম্যাটিং</h1>
+                        <p class="section-description">ওয়েবপেজে টেক্সটকে সুন্দরভাবে সাজান: বোল্ড, ইটালিক, হেডিং ইত্যাদি!</p>
+
+                        <h2>১. টেক্সট ফরম্যাটিং ট্যাগসমূহ</h2>
+                        <p>HTML এ বিভিন্ন ট্যাগ ব্যবহার করে টেক্সটকে ভিন্ন ভিন্ন স্টাইলে উপস্থাপন করা যায়। এর মাধ্যমে আপনি ওয়েবপেজের কন্টেন্টকে আরও সুস্পষ্ট এবং আকর্ষণীয় করে তুলতে পারেন।</p>
+
+                        <h3>সাধারণ টেক্সট ফরম্যাটিং ট্যাগ:</h3>
+                        <ul>
+                            <li>**`<b>` এবং `<strong>`:** টেক্সটকে বোল্ড করার জন্য ব্যবহৃত হয়। `<strong>` ট্যাগটি টেক্সটের গুরুত্ব বোঝায় (semantic meaning)।</li>
+                            <div class="code-example">
+                                <pre><code>&lt;p&gt;এটি একটি &lt;b&gt;বোল্ড&lt;/b&gt; টেক্সট।&lt;/p&gt;
+&lt;p&gt;এটি একটি &lt;strong&gt;গুরুত্বপূর্ণ&lt;/strong&gt; টেক্সট।&lt;/p&gt;</code></pre>
+                            </div>
+                            <li>**`<i>` এবং `<em>`:** টেক্সটকে ইটালিক করার জন্য ব্যবহৃত হয়। `<em>` ট্যাগটি টেক্সটের উপর জোর বোঝায় (semantic meaning)।</li>
+                            <div class="code-example">
+                                <pre><code>&lt;p&gt;এটি একটি &lt;i&gt;ইটালিক&lt;/i&gt; টেক্সট।&lt;/p&gt;
+&lt;p&gt;এটি একটি &lt;em&gt;জোর দেওয়া&lt;/em&gt; টেক্সট।&lt;/p&gt;</code></pre>
+                            </div>
+                            <li>**`<mark>`:** টেক্সটকে হাইলাইট করার জন্য ব্যবহৃত হয় (সাধারণত হলুদ ব্যাকগ্রাউন্ড)।</li>
+                            <div class="code-example">
+                                <pre><code>&lt;p&gt;এই অংশটি &lt;mark&gt;হাইলাইট&lt;/mark&gt; করা হয়েছে।&lt;/p&gt;</code></pre>
+                            </div>
+                            <li>**`<small>`:** টেক্সটকে ছোট ফন্ট সাইজে দেখানোর জন্য ব্যবহৃত হয়।</li>
+                            <div class="code-example">
+                                <pre><code>&lt;p&gt;এটি একটি &lt;small&gt;ছোট টেক্সট&lt;/small&gt;।&lt;/p&gt;</code></pre>
+                            </div>
+                            <li>**`<del>`:** টেক্সটের উপর একটি লাইন টেনে দেখানোর জন্য ব্যবহৃত হয় (যেমন, বাতিল করা টেক্সট)।</li>
+                            <div class="code-example">
+                                <pre><code>&lt;p&gt;মূল মূল্য: &lt;del&gt;$20&lt;/del&gt; এখন: $15&lt;/p&gt;</code></pre>
+                            </div>
+                            <li>**`<ins>`:** টেক্সটের নিচে একটি লাইন টেনে দেখানোর জন্য ব্যবহৃত হয় (যেমন, নতুন যোগ করা টেক্সট)।</li>
+                            <div class="code-example">
+                                <pre><code>&lt;p&gt;পরিবর্তন: &lt;ins&gt;নতুন টেক্সট&lt;/ins&gt; যোগ করা হয়েছে।&lt;/p&gt;</code></pre>
+                            </div>
+                            <li>**`<sub>`:** সাবস্ক্রিপ্ট টেক্সট (সাধারণ লাইনের নিচে ছোট করে)। বিজ্ঞানের ফর্মুলায় ব্যবহৃত হয়।</li>
+                            <div class="code-example">
+                                <pre><code>&lt;p&gt;পানির রাসায়নিক সংকেত: H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;</code></pre>
+                            </div>
+                            <li>**`<sup>`:** সুপারস্ক্রিপ্ট টেক্সট (সাধারণ লাইনের উপরে ছোট করে)। গাণিতিক সূচকে ব্যবহৃত হয়।</li>
+                            <div class="code-example">
+                                <pre><code>&lt;p&gt;গাণিতিক উদাহরণ: x&lt;sup&gt;2&lt;/sup&gt; + y&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;</code></pre>
+                            </div>
+                        </ul>
+
+                        <h2>২. হেডিং এবং প্যারাগ্রাফ</h2>
+                        <p>আপনারা মডিউল ১ এ হেডিং এবং প্যারাগ্রাফ ট্যাগ সম্পর্কে জেনেছেন। এই ট্যাগগুলো টেক্সটকে ওয়েবপেজে সুসংগঠিতভাবে উপস্থাপন করতে সাহায্য করে।</p>
+                        <ul>
+                            <li>**`<h1>` থেকে `<h6>`:** হেডিং ট্যাগগুলো একটি পেজের কাঠামো নির্ধারণ করে। `<h1>` হলো সবচেয়ে গুরুত্বপূর্ণ হেডিং এবং `<h6>` সবচেয়ে কম গুরুত্বপূর্ণ।</li>
+                            <li>**`<p>`:** প্যারাগ্রাফ ট্যাগ হলো টেক্সট ব্লক তৈরি করার জন্য ব্যবহৃত হয়। প্রতিটি `<p>` ট্যাগ একটি নতুন প্যারাগ্রাফ শুরু করে।</li>
+                        </ul>
+
+                        <h3>উদাহরণ: বিভিন্ন টেক্সট ফরম্যাটিং ট্যাগ ব্যবহার</h3>
+                        <div class="code-example">
+                            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="bn"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;টেক্সট ফরম্যাটিং উদাহরণ&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;টেক্সট ফরম্যাটিং এর ব্যবহার&lt;/h1&gt;
+    &lt;p&gt;এই লাইনটি &lt;strong&gt;বোল্ড&lt;/strong&gt; এবং &lt;em&gt;ইটালিক&lt;/em&gt; উভয়ই।&lt;/p&gt;
+    &lt;p&gt;এখানে একটি &lt;mark&gt;গুরুত্বপূর্ণ তথ্য&lt;/mark&gt; হাইলাইট করা হয়েছে।&lt;/p&gt;
+    &lt;p&gt;সাধারণ টেক্সট এবং &lt;small&gt;ছোট টেক্সট&lt;/small&gt;।&lt;/p&gt;
+    &lt;p&gt;আগের দাম ছিল &lt;del&gt;৫০০ টাকা&lt;/del&gt;, এখন মাত্র &lt;ins&gt;৩৫০ টাকা&lt;/ins&gt;!&lt;/p&gt;
+    &lt;p&gt;গণিত: (a+b)&lt;sup&gt;2&lt;/sup&gt; = a&lt;sup&gt;2&lt;/sup&gt; + 2ab + b&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
+    &lt;p&gt;রসায়ন: CO&lt;sub&gt;2&lt;/sub&gt; (কার্বন ডাই অক্সাইড)&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                        </div>
+                        <p>এই উদাহরণটি আপনাকে দেখাবে কিভাবে বিভিন্ন টেক্সট ফরম্যাটিং ট্যাগ ব্যবহার করে আপনার ওয়েবপেজের কন্টেন্টকে আরও সুন্দর এবং তথ্যপূর্ণ করে তোলা যায়।</p>
+                    </div>
+
+                    <div class="navigation-buttons">
+                        <button onclick="location.href='html_module_2_tags_attributes.html'" class="btn-secondary"> < পূর্ববর্তী মডিউল</button>
+                        <!-- ভবিষ্যতে পরবর্তী মডিউলের লিঙ্ক যোগ করুন -->
+                        <!-- <button onclick="location.href='html_module_4_links.html'" class="btn-primary">পরবর্তী মডিউল > </button> -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p>কপিরাইট © <span id="current-year"></span> । সর্বস্বত্ব সংরক্ষিত । <a href="mailto:fahadbinmamun06@gmail.com">Fahad Bin Mamun</a></p>
+            </div>
+        </footer>
+    </div> <!-- End of content-wrapper -->
+
+    <script src="../js/index.js?v=20250527-2"></script>
+    <script>
+        // এই নির্দিষ্ট পেজের জন্য লোডিং স্ক্রিন লুকানোর লজিক
+        document.addEventListener('DOMContentLoaded', function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                loadingScreen.classList.add('hidden');
+                document.body.style.pointerEvents = 'auto'; // নিশ্চিত করুন pointer-events চালু হয়েছে
+            }
+        });
+        window.addEventListener('load', function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                loadingScreen.classList.add('hidden');
+                document.body.style.pointerEvents = 'auto';
+            }
+        });
+        setTimeout(function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                loadingScreen.classList.add('hidden');
+                document.body.style.pointerEvents = 'auto';
+            }
+        }, 3500); // 3.5 সেকেন্ড পর লুকান (ফলব্যাক)
+    </script>
+</body>
+</html>
