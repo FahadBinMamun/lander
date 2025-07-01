@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>টপিক ২: ট্যাগ ও অ্যাট্রিবিউট - ICT Portal by ALPCG</title>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/index.css?v=20250527-2">
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:wght@400;700&family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* এই পেজের জন্য নির্দিষ্ট কিছু স্টাইল - মডিউলগুলোর মতোই থাকবে */
+        .module-content-area {
+            background-color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 102, 204, 0.08);
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .module-content-area h1,
+        .module-content-area h2,
+        .module-content-area h3 {
+            color: #2d4966;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .module-content-area p {
+            font-family: 'Tiro Bangla', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4e6d8c;
+        }
+        .module-content-area ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 15px;
+            color: #4e6d8c;
+        }
+        .module-content-area ul li {
+            margin-bottom: 8px;
+            font-family: 'Tiro Bangla', sans-serif;
+            font-size: 1.05rem;
+        }
+        .code-example {
+            background-color: #f0f8ff;
+            border: 1px solid #cce0ff;
+            border-left: 5px solid #4d94ff;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #333;
+            white-space: pre-wrap;
+        }
+        .back-button-container, .next-button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- লোডিং স্ক্রিন -->
+    <div id="loading-screen">
+        <div class="loader"></div>
+        <p>লোড হচ্ছে... অনুগ্রহ করে অপেক্ষা করুন</p>
+    </div>
+
+    <!-- সাইডবার টগল করার জন্য হিডেন চেক-বক্স -->
+    <input type="checkbox" id="check">
+
+    <!-- সাইডবার মেনু -->
+    <div class="sidebar_menu">
+        <div class="logo">
+            <a href="../index.html">ICT Portal By ALPCG</a>
+        </div>
+        <div class="btn_two">
+            <label for="check">
+                <i class="fas fa-times"></i>
+            </label>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><i class="fas fa-home"></i><a href="../index.html" class="sidebar-link">হোম</a></li>
+                <li><i class="fas fa-python"></i><a href="../python_course_landing.html" class="sidebar-link">পাইথন কোর্স</a></li>
+                <li><i class="fas fa-code"></i><a href="../html_course_landing.html" class="sidebar-link">HTML বেসিক</a></li>
+                <li><i class="fas fa-info-circle"></i><a href="#" class="sidebar-link">আমাদের সম্পর্কে</a></li>
+                <li><i class="fas fa-envelope"></i><a href="#" class="sidebar-link">যোগাযোগ</a></li>
+            </ul>
+        </div>
+        <div class="social_media">
+            <ul>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </ul>
+        </div>
+    </div>
+
+    <!-- মূল কন্টেন্ট র‍্যাপার -->
+    <div id="content-wrapper">
+        <header>
+            <div class="container">
+                <div id="branding">
+                    <h1><a href="https://omarkgschool.com" target="_blank" rel="noopener">Omar Kindergarten School & Omar Garten Academy</a></h1>
+                    <h2><a href="../index.html">ICT Portal By ALPCG</a></h2>
+                </div>
+                <div class="btn_one">
+                    <label for="check">
+                        <i class="fas fa-bars"></i>
+                    </label>
+                </div>
+                <nav></nav>
+            </div>
+        </header>
+
+        <main>
+            <section id="module-detail-section">
+                <div class="container">
+                    <div class="module-content-area">
+                        <h1>টপিক ২: ট্যাগ ও অ্যাট্রিবিউট</h1>
+                        <p class="section-description">HTML এর বিল্ডিং ব্লক: ট্যাগ ও অ্যাট্রিবিউটের ব্যবহার!</p>
+
+                        <h2>১. HTML ট্যাগ কী?</h2>
+                        <p>**HTML ট্যাগ** হলো HTML ডকুমেন্টের মূল উপাদান। ট্যাগগুলো কন্টেন্টের শুরু ও শেষ নির্দেশ করে এবং ব্রাউজারকে বলে দেয় কন্টেন্টটি কিভাবে প্রদর্শিত হবে। বেশিরভাগ ট্যাগের একটি ওপেনিং ট্যাগ (`<tagname>`) এবং একটি ক্লোজিং ট্যাগ (`</tagname>`) থাকে, এবং কন্টেন্ট এই দুই ট্যাগের মাঝখানে থাকে।</p>
+                        <p>উদাহরণস্বরূপ, একটি প্যারাগ্রাফ লেখার জন্য আমরা `<p>` ট্যাগ ব্যবহার করি:</p>
+                        <div class="code-example">
+                            <pre><code>&lt;p&gt;এটি একটি প্যারাগ্রাফ।&lt;/p&gt;</code></pre>
+                        </div>
+                        <p>কিছু ট্যাগ আছে যাদের কোনো ক্লোজিং ট্যাগ থাকে না, এদেরকে **সেল্ফ-ক্লোজিং ট্যাগ** বা **ভয়েড ট্যাগ** বলা হয়। যেমন, একটি লাইন ব্রেক (`<br>`) বা একটি ইমেজ (`<img>`)।</p>
+
+                        <h3>সাধারণ HTML ট্যাগসমূহ:</h3>
+                        <ul>
+                            <li>**`<h1>` থেকে `<h6>`:** হেডিং ট্যাগ। `<h1>` সবচেয়ে বড় হেডিং এবং `<h6>` সবচেয়ে ছোট হেডিং।</li>
+                            <div class="code-example">
+                                <pre><code>&lt;h1&gt;এটি একটি প্রধান হেডিং&lt;/h1&gt;
+&lt;h2&gt;এটি একটি সাব-হেডিং&lt;/h2&gt;</code></pre>
+                            </div>
+                            <li>**`<p>`:** প্যারাগ্রাফ ট্যাগ। সাধারণ টেক্সট লেখার জন্য ব্যবহৃত হয়।</li>
+                            <div class="code-example">
+                                <pre><code>&lt;p&gt;এটি একটি সাধারণ টেক্সট প্যারাগ্রাফ।&lt;/p&gt;</code></pre>
+                            </div>
+                            <li>**`<br>`:** লাইন ব্রেক ট্যাগ। নতুন লাইন শুরু করার জন্য ব্যবহৃত হয় (কোনো ক্লোজিং ট্যাগ নেই)।</li>
+                            <div class="code-example">
+                                <pre><code>প্রথম লাইন&lt;br&gt;দ্বিতীয় লাইন</code></pre>
+                            </div>
+                            <li>**`<hr>`:** হরাইজন্টাল রুল ট্যাগ। একটি থিম্যাটিক ব্রেক বা অনুভূমিক রেখা তৈরি করার জন্য ব্যবহৃত হয় (কোনো ক্লোজিং ট্যাগ নেই)।</li>
+                            <div class="code-example">
+                                <pre><code>টেক্সট ১
+&lt;hr&gt;
+টেক্সট ২</code></pre>
+                            </div>
+                        </ul>
+
+                        <h2>২. HTML অ্যাট্রিবিউট কী?</h2>
+                        <p>**HTML অ্যাট্রিবিউট** হলো ট্যাগগুলোকে অতিরিক্ত তথ্য প্রদান করার জন্য ব্যবহৃত হয়। অ্যাট্রিবিউটগুলো সবসময় ওপেনিং ট্যাগের মধ্যে থাকে এবং `name="value"` ফরম্যাটে লেখা হয়।</p>
+                        <p>উদাহরণস্বরূপ, একটি লিঙ্কের URL নির্দিষ্ট করার জন্য আমরা `href` অ্যাট্রিবিউট ব্যবহার করি, অথবা একটি ছবির উৎস (`source`) নির্দিষ্ট করার জন্য `src` অ্যাট্রিবিউট ব্যবহার করি।</p>
+
+                        <h3>সাধারণ HTML অ্যাট্রিবিউটসমূহ:</h3>
+                        <ul>
+                            <li>**`href`:** হাইপারলিঙ্কের গন্তব্য URL নির্দিষ্ট করে (সাধারণত `<a>` ট্যাগের সাথে)।</li>
+                            <div class="code-example">
+                                <pre><code>&lt;a href="https://www.google.com"&gt;গুগলে যান&lt;/a&gt;</code></pre>
+                            </div>
+                            <li>**`src`:** ছবির উৎস (URL) নির্দিষ্ট করে (সাধারণত `<img>` ট্যাগের সাথে)।</li>
+                            <div class="code-example">
+                                <pre><code>&lt;img src="image.jpg" alt="একটি ছবির বর্ণনা"&gt;</code></pre>
+                            </div>
+                            <li>**`alt`:** যদি ছবিটি লোড না হয়, তাহলে ছবির বিকল্প টেক্সট প্রদর্শন করে (সাধারণত `<img>` ট্যাগের সাথে)। এটি অ্যাক্সেসিবিলিটির জন্য গুরুত্বপূর্ণ।</li>
+                            <li>**`width` এবং `height`:** ছবি বা অন্যান্য উপাদানের প্রস্থ ও উচ্চতা নির্দিষ্ট করে।</li>
+                            <div class="code-example">
+                                <pre><code>&lt;img src="image.jpg" alt="একটি ছবি" width="200" height="150"&gt;</code></pre>
+                            </div>
+                            <li>**`style`:** উপাদানের ইনলাইন CSS স্টাইল নির্দিষ্ট করে।</li>
+                            <div class="code-example">
+                                <pre><code>&lt;p style="color: blue; font-size: 18px;"&gt;এটি নীল রঙের টেক্সট।&lt;/p&gt;</code></pre>
+                            </div>
+                            <li>**`class`:** CSS বা JavaScript দ্বারা উপাদান নির্বাচন করার জন্য একটি ক্লাস নাম নির্দিষ্ট করে।</li>
+                            <li>**`id`:** CSS বা JavaScript দ্বারা একটি অনন্য উপাদান নির্বাচন করার জন্য একটি অনন্য আইডি নির্দিষ্ট করে।</li>
+                            <div class="code-example">
+                                <pre><code>&lt;div class="container" id="main-content"&gt;
+    &lt;p&gt;এই ডিভটি কন্টেইনার ক্লাস এবং main-content আইডি সহ।&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </ul>
+
+                        <h3>ট্যাগ ও অ্যাট্রিবিউটের সমন্বিত উদাহরণ:</h3>
+                        <div class="code-example">
+                            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="bn"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;ট্যাগ ও অ্যাট্রিবিউট উদাহরণ&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 style="color: green;"&gt;আমার ওয়েবপেজ&lt;/h1&gt;
+    &lt;p&gt;এই প্যারাগ্রাফটি একটি &lt;strong&gt;গুরুত্বপূর্ণ&lt;/strong&gt; তথ্য বহন করে।&lt;/p&gt;
+    &lt;a href="https://www.wikipedia.org" target="_blank"&gt;উইকিপিডিয়াতে যান&lt;/a&gt;
+    &lt;br&gt;
+    &lt;img src="https://placehold.co/150x100/ADD8E6/000000?text=Sample+Image" alt="একটি নমুনা ছবি"&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                        </div>
+                        <p>এই উদাহরণে `<h1>` ট্যাগে `style` অ্যাট্রিবিউট ব্যবহার করে টেক্সটের রঙ সবুজ করা হয়েছে। `<p>` ট্যাগে `<strong>` ট্যাগ ব্যবহার করে "গুরুত্বপূর্ণ" শব্দটি বোল্ড করা হয়েছে। `<a>` ট্যাগে `href` অ্যাট্রিবিউট ব্যবহার করে লিঙ্ক এবং `target="_blank"` অ্যাট্রিবিউট ব্যবহার করে নতুন ট্যাবে লিঙ্ক খোলা হয়েছে। `<img>` ট্যাগে `src` এবং `alt` অ্যাট্রিবিউট ব্যবহার করা হয়েছে।</p>
+                    </div>
+
+                    <div class="navigation-buttons">
+                        <button onclick="location.href='html_module_1_structure.html'" class="btn-secondary"> < পূর্ববর্তী মডিউল</button>
+                        <button onclick="location.href='html_module_3_text_formatting.html'" class="btn-primary">পরবর্তী মডিউল > </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p>কপিরাইট © <span id="current-year"></span> । সর্বস্বত্ব সংরক্ষিত । <a href="mailto:fahadbinmamun06@gmail.com">Fahad Bin Mamun</a></p>
+            </div>
+        </footer>
+    </div> <!-- End of content-wrapper -->
+
+    <script src="../js/index.js?v=20250527-2"></script>
+    <script>
+        // এই নির্দিষ্ট পেজের জন্য লোডিং স্ক্রিন লুকানোর লজিক
+        document.addEventListener('DOMContentLoaded', function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                loadingScreen.classList.add('hidden');
+                document.body.style.pointerEvents = 'auto'; // নিশ্চিত করুন pointer-events চালু হয়েছে
+            }
+        });
+        window.addEventListener('load', function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                loadingScreen.classList.add('hidden');
+                document.body.style.pointerEvents = 'auto';
+            }
+        });
+        setTimeout(function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                loadingScreen.classList.add('hidden');
+                document.body.style.pointerEvents = 'auto';
+            }
+        }, 3500); // 3.5 সেকেন্ড পর লুকান (ফলব্যাক)
+    </script>
+</body>
+</html>
