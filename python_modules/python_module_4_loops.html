@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- টাইটেল আপডেট করা হয়েছে -->
+    <title>টপিক ৪: লুপস - ICT Portal by ALPCG</title>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/index.css?v=20250527-2">
+    <!-- Poppins ফন্টটি আপনার বিদ্যমান ফন্টগুলোর সাথে যোগ করা হয়েছে -->
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:wght@400;700&family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* এই পেজের জন্য নির্দিষ্ট কিছু স্টাইল - আগের মডিউলগুলোর মতোই থাকবে */
+        .module-content-area {
+            background-color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 102, 204, 0.08);
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .module-content-area h1,
+        .module-content-area h2,
+        .module-content-area h3 {
+            color: #2d4966;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .module-content-area p {
+            font-family: 'Tiro Bangla', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4e6d8c;
+        }
+        .module-content-area ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 15px;
+            color: #4e6d8c;
+        }
+        .module-content-area ul li {
+            margin-bottom: 8px;
+            font-family: 'Tiro Bangla', sans-serif;
+            font-size: 1.05rem;
+        }
+        .code-example {
+            background-color: #f0f8ff;
+            border: 1px solid #cce0ff;
+            border-left: 5px solid #4d94ff;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #333;
+            white-space: pre-wrap;
+        }
+        .back-button-container, .next-button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        /* কোড এডিটর এবং আউটপুট স্টাইল */
+        .code-editor-container {
+            margin-top: 30px;
+            margin-bottom: 25px;
+            background-color: #f8fcfd;
+            border: 1px solid #d9edf7;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+        }
+        #python-code-input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #cce0ff;
+            border-radius: 8px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 1rem;
+            background-color: #f0f8ff;
+            color: #333;
+            resize: vertical;
+            min-height: 150px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        #run-code-btn-module {
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+        }
+        #python-output-module, #error-output-module {
+            background-color: #eaf6ff;
+            border: 1px solid #b3d9ff;
+            border-left: 5px solid #4d94ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #2d4966;
+            white-space: pre-wrap;
+        }
+        #error-output-module {
+            border-left: 5px solid #c62828;
+            background-color: #ffe6e6;
+            color: #c62828;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        নতুন সংযোজন: লোডিং স্ক্রিন।
+        এটি <body> ট্যাগের একদম শুরুতেই যোগ করা হয়েছে।
+    -->
+    <div id="loading-screen">
+        <div class="loader"></div>
+        <p>লোড হচ্ছে... অনুগ্রহ করে অপেক্ষা করুন</p>
+    </div>
+
+    <!-- 
+        আপনার দেওয়া ডিজাইন অনুযায়ী সাইডবার টগল করার জন্য একটি হিডেন চেক-বক্স।
+        এটি CSS দ্বারা সাইডবার নিয়ন্ত্রণ করবে।
+        এটি <body> ট্যাগের ঠিক পরেই, লোডিং স্ক্রিনের পরে যোগ করা হয়েছে।
+    -->
+    <input type="checkbox" id="check">
+
+    <!-- 
+        আপনার দেওয়া নতুন ডিজাইনের 'sidebar_menu' এর কাঠামো।
+        লোগো, ক্লোজ বাটন, মেনু লিঙ্ক এবং সোশ্যাল মিডিয়া লিঙ্ক সহ।
+        আপনার সাইটের লিঙ্কগুলো (যেমন index.html, python_course_landing.html) এখানে আপডেট করা হয়েছে।
+        এই ফাইলটি যেহেতু 'python_modules' ফোল্ডারের ভিতরে আছে, তাই লিঙ্কগুলোতে '../' ব্যবহার করা হয়েছে।
+    -->
+    <div class="sidebar_menu">
+        <div class="logo">
+            <a href="../index.html">ICT Portal By ALPCG</a>
+            <!-- 
+                এখানে আপনি চাইলে একটি লোগো ইমেজও যোগ করতে পারেন:
+                <img src="path/to/your/logo.png" alt="Portal Logo">
+            -->
+        </div>
+        <div class="btn_two">
+            <label for="check">
+                <i class="fas fa-times"></i>
+            </label>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><i class="fas fa-home"></i><a href="../index.html" class="sidebar-link">হোম</a></li>
+                <li><i class="fas fa-python"></i><a href="../python_course_landing.html" class="sidebar-link">পাইথন কোর্স</a></li>
+                <!-- 
+                    আপনার প্রয়োজন অনুযায়ী এখানে অন্যান্য মডিউলের লিঙ্ক যোগ করতে পারেন।
+                    উদাহরণ: <li><i class="fas fa-file-code"></i><a href="python_module_1_intro.html" class="sidebar-link">মডিউল ১: পরিচিতি</a></li>
+                -->
+                <li><i class="fas fa-info-circle"></i><a href="#" class="sidebar-link">আমাদের সম্পর্কে</a></li>
+                <li><i class="fas fa-envelope"></i><a href="#" class="sidebar-link">যোগাযোগ</a></li>
+            </ul>
+        </div>
+        <div class="social_media">
+            <ul>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 
+        আপনার সাইটের মূল কন্টেন্ট (হেডার, মেইন, ফুটার) এখন এই 'content-wrapper' div এর ভেতরে থাকবে।
+        যখন সাইডবার খুলবে, তখন এই পুরো অংশটি ডানদিকে সরে যাবে।
+    -->
+    <div id="content-wrapper">
+        <header>
+            <div class="container">
+                <div id="branding">
+                    <h1><a href="https://omarkgschool.com" target="_blank" rel="noopener">Omar Kindergarten School & Omar Garten Academy</a></h1>
+                    <!-- হেডার টেক্সট আপডেট করা হয়েছে -->
+                    <h2><a href="../index.html">ICT Portal By ALPCG</a></h2>
+                </div>
+                <!-- 
+                    সাইডবার খোলার জন্য হ্যামবার্গার আইকন বাটন।
+                    আপনার দেওয়া ডিজাইন অনুযায়ী 'btn_one' ক্লাসের মধ্যে এটি রাখা হয়েছে।
+                    এর অবস্থান CSS দ্বারা হেডারের বামদিকে সেট করা হবে।
+                -->
+                <div class="btn_one">
+                    <label for="check">
+                        <i class="fas fa-bars"></i>
+                    </label>
+                </div>
+                <nav></nav>
+            </div>
+        </header>
+
+        <main>
+            <section id="module-detail-section">
+                <div class="container">
+                    <div class="module-content-area">
+                        <h1>টপিক ৪: লুপস (Loops)</h1>
+                        <p class="section-description">একই কাজ বারবার করানো: সময় বাঁচান, কোডকে কাজ করতে দিন!</p>
+
+                        <h2>১. লুপ কী এবং কেন ব্যবহার করব?</h2>
+                        <p>প্রোগ্রামিংয়ে এমন অনেক পরিস্থিতি আসে যখন আপনাকে একটি নির্দিষ্ট কোডের অংশ বারবার এক্সিকিউট করতে হয়। যেমন, আপনাকে ১ থেকে ১০০ পর্যন্ত সংখ্যাগুলো প্রিন্ট করতে হবে, অথবা একটি লিস্টের প্রতিটি নাম ধরে "Hello" বলতে হবে। আপনি চাইলে ১০০ বার `print()` লিখতে পারেন, কিন্তু এটি অনেক সময়সাপেক্ষ এবং ক্লান্তিকর! এই ধরনের পুনরাবৃত্তিমূলক কাজগুলো সহজে করার জন্য আমরা **লুপ (Loop)** ব্যবহার করি।</p>
+                        <p>লুপ হলো প্রোগ্রামের একটি শক্তিশালী টুল, যা আপনাকে একই কোড ব্লক একটি নির্দিষ্ট সংখ্যক বার অথবা একটি নির্দিষ্ট শর্ত পূরণ না হওয়া পর্যন্ত বারবার চালাতে সাহায্য করে। এটি কোডকে ছোট, পরিষ্কার এবং আরও কার্যকর করে তোলে।</p>
+                        <p>পাইথনে প্রধানত দুই ধরনের লুপ আছে: **`for` লুপ** এবং **`while` লুপ**।</p>
+
+                        <h2>২. `for` লুপ (নির্দিষ্ট সংখ্যক বার ঘোরার জন্য)</h2>
+                        <p>**`for` লুপ** ব্যবহার করা হয় যখন আপনি জানেন যে একটি কোড ব্লক কতবার চলবে, অথবা যখন আপনি একটি সংগ্রহ (যেমন: একটি লিস্টের ভেতরের প্রতিটি আইটেম) এর প্রতিটি সদস্যের উপর কাজ করতে চান।</p>
+                        <p>এর সবচেয়ে সাধারণ ব্যবহার হলো `range()` ফাংশন বা একটি **লিস্ট** (List) এর সাথে।</p>
+
+                        <h3>`for` লুপের উদাহরণ (সংখ্যা দিয়ে):</h3>
+                        <p>১ থেকে ৫ পর্যন্ত সংখ্যা প্রিন্ট করার জন্য:</p>
+                        <div class="code-example">
+                            <pre><code># Using for loop with range()
+# range(5) generates numbers from 0 up to (but not including) 5: 0, 1, 2, 3, 4
+print("Counting from 0 to 4:")
+for i in range(5):
+    print(i)
+# Output:
+# 0
+# 1
+# 2
+# 3
+# 4
+
+print("\nCounting from 1 to 5:")
+for num in range(1, 6): # range(start, end+1)
+    print(num)
+# Output:
+# 1
+# 2
+# 3
+# 4
+# 5
+</code></pre>
+                        </div>
+                        <p>`range(start, end)`: এখানে `start` থেকে শুরু করে `end-1` পর্যন্ত সংখ্যা তৈরি হয়।</p>
+
+                        <h3>`for` লুপের উদাহরণ (টেক্সট বা লিস্ট দিয়ে):</h3>
+                        <p>একটি নামের লিস্টের প্রতিটি নাম প্রিন্ট করার জন্য:</p>
+                        <div class="code-example">
+                            <pre><code># Using for loop with a list of names
+students = ["Rahim", "Karim", "Salma", "Jamal"]
+
+print("Greeting students:")
+for name in students:
+    print(f"Hello, {name}!")
+# Output:
+# Hello, Rahim!
+# Hello, Karim!
+# Hello, Salma!
+# Hello, Jamal!
+
+# Looping through a string (each character)
+my_word = "Python"
+print("\nCharacters in 'Python':")
+for char in my_word:
+    print(char)
+# Output:
+# P
+# y
+# t
+# h
+# o
+# n
+</code></pre>
+                        </div>
+
+                        <h2>৩. `while` লুপ (শর্ত পূরণ না হওয়া পর্যন্ত ঘোরার জন্য)</h2>
+                        <p>**`while` লুপ** ব্যবহার করা হয় যখন আপনি একটি কোড ব্লক ততক্ষণ পর্যন্ত চালাতে চান, যতক্ষণ না একটি নির্দিষ্ট শর্ত মিথ্যা (False) হয়ে যায়। অর্থাৎ, আপনি জানেন না কোডটি কতবার চলবে, কিন্তু জানেন কোন শর্ত পূরণ হলে এটি থামবে।</p>
+
+                        <h3>`while` লুপের উদাহরণ:</h3>
+                        <p>১ থেকে ৫ পর্যন্ত সংখ্যা প্রিন্ট করার জন্য:</p>
+                        <div class="code-example">
+                            <pre><code># Using while loop
+count = 1
+
+print("Counting from 1 to 5 using while loop:")
+while count <= 5: # Condition: Is count less than or equal to 5?
+    print(count)
+    count = count + 1 # Increment count by 1 (VERY IMPORTANT to avoid infinite loop)
+# Output:
+# 1
+# 2
+# 3
+# 4
+# 5
+</code></pre>
+                        </div>
+                        <p>**গুরুত্বপূর্ণ:** `while` লুপ ব্যবহার করার সময় অবশ্যই খেয়াল রাখতে হবে যেন লুপের ভেতরের কোনো একসময় শর্তটি মিথ্যা হয়ে যায়, না হলে এটি **ইনফিনিট লুপ (Infinite Loop)** হয়ে যাবে এবং প্রোগ্রামটি থামবে না। `count = count + 1` (বা `count += 1`) লাইনটি এখানে খুবই গুরুত্বপূর্ণ, কারণ এটি `count` এর মান বাড়িয়ে শর্তটিকে একসময় মিথ্যা করে দেবে।</p>
+
+                        <h3>`break` এবং `continue` স্টেটমেন্ট (লুপ নিয়ন্ত্রণ):</h3>
+                        <p>লুপের ভেতর থেকে লুপের প্রবাহকে নিয়ন্ত্রণ করার জন্য `break` এবং `continue` দুটি বিশেষ স্টেটমেন্ট ব্যবহার করা হয়:</p>
+                        <ul>
+                            <li>**`break`:** যখন `break` স্টেটমেন্ট এক্সিকিউট হয়, তখন বর্তমান লুপটি সম্পূর্ণভাবে বন্ধ হয়ে যায় এবং প্রোগ্রাম লুপের পরের লাইনে চলে আসে।</li>
+                            <li>**`continue`:** যখন `continue` স্টেটমেন্ট এক্সিকিউট হয়, তখন লুপের বর্তমান ইটারেশন (ঘোরা) স্কিপ (বাদ) হয়ে যায় এবং লুপটি পরের ইটারেশন থেকে শুরু হয়।</li>
+                        </ul>
+
+                        <div class="code-example">
+                            <pre><code># Using break in a loop
+print("Using 'break':")
+for i in range(1, 10):
+    if i == 5:
+        break # Stop the loop when i is 5
+    print(i)
+# Output:
+# 1
+# 2
+# 3
+# 4
+
+# Using continue in a loop
+print("\nUsing 'continue':")
+for i in range(1, 6):
+    if i == 3:
+        continue # Skip printing when i is 3
+    print(i)
+# Output:
+# 1
+# 2
+# 4
+# 5
+</code></pre>
+                        </div>
+
+                        <p>লুপ ব্যবহার করে আমরা হাজার হাজার বা লক্ষ লক্ষ কাজ খুব কম কোড লিখে করিয়ে নিতে পারি, যা প্রোগ্রামিংকে অত্যন্ত শক্তিশালী করে তোলে।</p>
+
+                        <h3>এখানে আপনার কোড প্র্যাকটিস করুন!</h3>
+                        <p>১ থেকে ১০ পর্যন্ত জোড় সংখ্যাগুলো (Even numbers) প্রিন্ট করার জন্য একটি `for` লুপ অথবা `while` লুপ লিখুন। অথবা, একটি লিস্টের নামগুলো প্রিন্ট করুন এবং যদি কোনো নির্দিষ্ট নাম থাকে, তবে লুপটি থামিয়ে দিন।</p>
+                        <div class="code-editor-container">
+                            <textarea id="python-code-input" rows="10" placeholder="# Write your loop code here!&#10;# Example 1: Print numbers from 1 to 10&#10;for num in range(1, 11):&#10;    print(num)&#10;&#10;# Example 2: Print even numbers up to 20&#10;# count = 2&#10;# while count <= 20:&#10;#     print(count)&#10;#     count += 2&#10;&#10;# Example 3: Find a specific name in a list and stop&#10;# names = ['Alice', 'Bob', 'Charlie', 'David']&#10;# search_name = 'Charlie'&#10;# for name in names:&#10;#     if name == search_name:&#10;#         print(f'{search_name} found!')&#10;#         break&#10;#     print(f'Checking {name}...')"></textarea>
+                            <button id="run-code-btn-module" class="btn-primary">কোড রান করুন</button>
+                        </div>
+
+                        <h3>আউটপুট:</h3>
+                        <div id="python-output-module" class="code-example">
+                            আপনার কোডের ফলাফল এখানে দেখা যাবে।
+                        </div>
+                        <h3>এরর:</h3>
+                        <div id="error-output-module" class="error-text"></div>
+
+                    </div>
+
+                    <div class="navigation-buttons">
+                        <a href="python_module_3_conditions.html" class="btn-secondary"> < পূর্ববর্তী মডিউল</a> </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p>কপিরাইট © <span id="current-year"></span> । সর্বস্বত্ব সংরক্ষিত । <a href="mailto:fahadbinmamun06@gmail.com">Fahad Bin Mamun</a></p>
+                <p class="footer-note">এই পোর্টালটি শিক্ষার্থীদের আইসিটি শিক্ষাকে আরও সহজ ও কার্যকর করার লক্ষ্যে তৈরি করা হয়েছে।</p>
+            </div>
+        </footer>
+    </div> <!-- End of content-wrapper -->
+
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+    <script src="../js/index.js?v=20250527-2"></script>
+</body>
+</html>
