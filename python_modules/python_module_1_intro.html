@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- টাইটেল আপডেট করা হয়েছে -->
     <title>টপিক ১: পাইথন পরিচিতি - ICT Portal by ALPCG</title>
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/index.css?v=20250527-2">
-    <!-- Poppins ফন্টটি আপনার বিদ্যমান ফন্টগুলোর সাথে যোগ করা হয়েছে -->
     <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:wght@400;700&family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -55,7 +53,7 @@
             font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
             font-size: 0.95rem;
             color: #333;
-            white-space: pre-wrap; /* For code formatting */
+            white-space: pre-wrap;
         }
         .back-button-container, .next-button-container {
             text-align: center;
@@ -66,7 +64,6 @@
             justify-content: space-between;
             margin-top: 40px;
         }
-        /* কোড এডিটর এবং আউটপুট স্টাইল (python_practice.html থেকে কপি করা) */
         .code-editor-container {
             margin-top: 30px;
             margin-bottom: 25px;
@@ -86,11 +83,11 @@
             background-color: #f0f8ff;
             color: #333;
             resize: vertical;
-            min-height: 150px; /* মডিউলের জন্য ছোট টেক্সটবক্স */
+            min-height: 150px;
             margin-bottom: 15px;
             box-sizing: border-box;
         }
-        #run-code-btn-module { /* ID পরিবর্তন করা হয়েছে যেন এই পেজে অনন্য থাকে */
+        #run-code-btn-module {
             display: block;
             width: fit-content;
             margin: 0 auto;
@@ -98,7 +95,7 @@
             font-size: 1.1rem;
             border-radius: 8px;
         }
-        #python-output-module, #error-output-module { /* ID পরিবর্তন করা হয়েছে */
+        #python-output-module, #error-output-module {
             background-color: #eaf6ff;
             border: 1px solid #b3d9ff;
             border-left: 5px solid #4d94ff;
@@ -120,35 +117,16 @@
     </style>
 </head>
 <body>
-    <!-- 
-        নতুন সংযোজন: লোডিং স্ক্রিন।
-        এটি <body> ট্যাগের একদম শুরুতেই যোগ করা হয়েছে।
-    -->
     <div id="loading-screen">
         <div class="loader"></div>
         <p>লোড হচ্ছে... অনুগ্রহ করে অপেক্ষা করুন</p>
     </div>
 
-    <!-- 
-        আপনার দেওয়া ডিজাইন অনুযায়ী সাইডবার টগল করার জন্য একটি হিডেন চেক-বক্স।
-        এটি CSS দ্বারা সাইডবার নিয়ন্ত্রণ করবে।
-        এটি <body> ট্যাগের ঠিক পরেই, লোডিং স্ক্রিনের পরে যোগ করা হয়েছে।
-    -->
     <input type="checkbox" id="check">
 
-    <!-- 
-        আপনার দেওয়া নতুন ডিজাইনের 'sidebar_menu' এর কাঠামো।
-        লোগো, ক্লোজ বাটন, মেনু লিঙ্ক এবং সোশ্যাল মিডিয়া লিঙ্ক সহ।
-        আপনার সাইটের লিঙ্কগুলো (যেমন index.html, python_course_landing.html) এখানে আপডেট করা হয়েছে।
-        এই ফাইলটি যেহেতু 'python_modules' ফোল্ডারের ভিতরে আছে, তাই লিঙ্কগুলোতে '../' ব্যবহার করা হয়েছে।
-    -->
     <div class="sidebar_menu">
         <div class="logo">
             <a href="../index.html">ICT Portal By ALPCG</a>
-            <!-- 
-                এখানে আপনি চাইলে একটি লোগো ইমেজও যোগ করতে পারেন:
-                <img src="path/to/your/logo.png" alt="Portal Logo">
-            -->
         </div>
         <div class="btn_two">
             <label for="check">
@@ -159,10 +137,7 @@
             <ul>
                 <li><i class="fas fa-home"></i><a href="../index.html" class="sidebar-link">হোম</a></li>
                 <li><i class="fas fa-python"></i><a href="../python_course_landing.html" class="sidebar-link">পাইথন কোর্স</a></li>
-                <!-- 
-                    আপনার প্রয়োজন অনুযায়ী এখানে অন্যান্য মডিউলের লিঙ্ক যোগ করতে পারেন।
-                    উদাহরণ: <li><i class="fas fa-file-code"></i><a href="python_module_1_intro.html" class="sidebar-link">মডিউল ১: পরিচিতি</a></li>
-                -->
+                <li><i class="fas fa-code"></i><a href="../html_course_landing.html" class="sidebar-link">HTML বেসিক</a></li>
                 <li><i class="fas fa-info-circle"></i><a href="#" class="sidebar-link">আমাদের সম্পর্কে</a></li>
                 <li><i class="fas fa-envelope"></i><a href="#" class="sidebar-link">যোগাযোগ</a></li>
             </ul>
@@ -177,23 +152,13 @@
         </div>
     </div>
 
-    <!-- 
-        আপনার সাইটের মূল কন্টেন্ট (হেডার, মেইন, ফুটার) এখন এই 'content-wrapper' div এর ভেতরে থাকবে।
-        যখন সাইডবার খুলবে, তখন এই পুরো অংশটি ডানদিকে সরে যাবে।
-    -->
     <div id="content-wrapper">
         <header>
             <div class="container">
                 <div id="branding">
                     <h1><a href="https://omarkgschool.com" target="_blank" rel="noopener">Omar Kindergarten School & Omar Garten Academy</a></h1>
-                    <!-- হেডার টেক্সট আপডেট করা হয়েছে -->
                     <h2><a href="../index.html">ICT Portal By ALPCG</a></h2>
                 </div>
-                <!-- 
-                    সাইডবার খোলার জন্য হ্যামবার্গার আইকন বাটন।
-                    আপনার দেওয়া ডিজাইন অনুযায়ী 'btn_one' ক্লাসের মধ্যে এটি রাখা হয়েছে।
-                    এর অবস্থান CSS দ্বারা হেডারের বামদিকে সেট করা হবে।
-                -->
                 <div class="btn_one">
                     <label for="check">
                         <i class="fas fa-bars"></i>
@@ -263,8 +228,7 @@
                 <p class="footer-note">এই পোর্টালটি শিক্ষার্থীদের আইসিটি শিক্ষাকে আরও সহজ ও কার্যকর করার লক্ষ্যে তৈরি করা হয়েছে।</p>
             </div>
         </footer>
-    </div> <!-- End of content-wrapper -->
-
+    </div>
     <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
     <script src="../js/index.js?v=20250527-2"></script>
 </body>
