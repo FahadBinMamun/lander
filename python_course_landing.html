@@ -3,23 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- টাইটেল আপডেট করা হয়েছে -->
     <title>পাইথন ব্যাসিক কোর্স - ICT Portal by ALPCG</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/index.css?v=20250527-2">
-    <!-- Poppins ফন্টটি আপনার বিদ্যমান ফন্টগুলোর সাথে যোগ করা হয়েছে -->
     <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:wght@400;700&family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* এই পেজের জন্য নির্দিষ্ট কিছু স্টাইল */
         #course-list-section .container {
             background-color: #ffffff;
             padding: 40px 30px;
             border-radius: 15px;
             box-shadow: 0 8px 20px rgba(0, 102, 204, 0.08);
             margin-bottom: 30px;
-            text-align: center; /* হেডিং এবং বর্ণনা সেন্টারে থাকবে */
+            text-align: center;
         }
         #course-list-section h2 {
             color: #2d4966;
@@ -30,19 +27,17 @@
             margin-bottom: 30px;
         }
 
-        /* class-cards-container এবং class-card এর স্টাইল index.css থেকে আসবে */
-        /* তবে এখানে অতিরিক্ত স্টাইল যোগ করা যেতে পারে যদি লাগে */
         .course-module-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
             padding: 20px 0;
-            max-width: 1000px; /* কার্ডের জন্য সর্বোচ্চ প্রস্থ */
-            margin: 0 auto; /* মাঝখানে আনতে */
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .course-module-card {
-            background-color: #f0f8ff; /* হালকা নীল ব্যাকগ্রাউন্ড */
+            background-color: #f0f8ff;
             border-radius: 15px;
             padding: 25px;
             text-align: center;
@@ -53,7 +48,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 180px; /* কার্ডের ন্যূনতম উচ্চতা */
+            min-height: 180px;
         }
 
         .course-module-card:hover {
@@ -69,7 +64,7 @@
         }
 
         .course-module-card:hover .module-icon {
-            color: #66b2ff; /* হোভারে আইকনের রঙ পরিবর্তন */
+            color: #66b2ff;
         }
 
         .course-module-card h4 {
@@ -91,13 +86,12 @@
             margin-top: 40px;
         }
 
-        /* Responsive adjustments */
         @media (max-width: 768px) {
             #course-list-section .container {
                 padding: 25px 15px;
             }
             .course-module-cards {
-                grid-template-columns: 1fr; /* ছোট স্ক্রিনে একক কলাম */
+                grid-template-columns: 1fr;
             }
             .course-module-card {
                 padding: 20px;
@@ -115,35 +109,16 @@
     </style>
 </head>
 <body>
-    <!-- 
-        নতুন সংযোজন: লোডিং স্ক্রিন।
-        এটি <body> ট্যাগের একদম শুরুতেই যোগ করা হয়েছে।
-    -->
     <div id="loading-screen">
         <div class="loader"></div>
         <p>লোড হচ্ছে... অনুগ্রহ করে অপেক্ষা করুন</p>
     </div>
 
-    <!-- 
-        আপনার দেওয়া ডিজাইন অনুযায়ী সাইডবার টগল করার জন্য একটি হিডেন চেক-বক্স।
-        এটি CSS দ্বারা সাইডবার নিয়ন্ত্রণ করবে।
-        এটি <body> ট্যাগের ঠিক পরেই, লোডিং স্ক্রিনের পরে যোগ করা হয়েছে।
-    -->
     <input type="checkbox" id="check">
 
-    <!-- 
-        আপনার দেওয়া নতুন ডিজাইনের 'sidebar_menu' এর কাঠামো।
-        লোগো, ক্লোজ বাটন, মেনু লিঙ্ক এবং সোশ্যাল মিডিয়া লিঙ্ক সহ।
-        আপনার সাইটের লিঙ্কগুলো (যেমন index.html, python_course_landing.html) এখানে আপডেট করা হয়েছে।
-        এই ফাইলটি যেহেতু মূল ফোল্ডারে আছে, তাই লিঙ্কগুলোতে `../` এর প্রয়োজন নেই।
-    -->
     <div class="sidebar_menu">
         <div class="logo">
             <a href="index.html">ICT Portal By ALPCG</a>
-            <!-- 
-                এখানে আপনি চাইলে একটি লোগো ইমেজও যোগ করতে পারেন:
-                <img src="path/to/your/logo.png" alt="Portal Logo">
-            -->
         </div>
         <div class="btn_two">
             <label for="check">
@@ -154,10 +129,7 @@
             <ul>
                 <li><i class="fas fa-home"></i><a href="index.html" class="sidebar-link">হোম</a></li>
                 <li><i class="fas fa-python"></i><a href="python_course_landing.html" class="sidebar-link">পাইথন কোর্স</a></li>
-                <!-- 
-                    আপনার প্রয়োজন অনুযায়ী এখানে অন্যান্য মডিউলের লিঙ্ক যোগ করতে পারেন।
-                    উদাহরণ: <li><i class="fas fa-file-code"></i><a href="python_modules/python_module_1_intro.html" class="sidebar-link">মডিউল ১: পরিচিতি</a></li>
-                -->
+                <li><i class="fas fa-code"></i><a href="html_course_landing.html" class="sidebar-link">HTML বেসিক</a></li>
                 <li><i class="fas fa-info-circle"></i><a href="#" class="sidebar-link">আমাদের সম্পর্কে</a></li>
                 <li><i class="fas fa-envelope"></i><a href="#" class="sidebar-link">যোগাযোগ</a></li>
             </ul>
@@ -172,23 +144,13 @@
         </div>
     </div>
 
-    <!-- 
-        আপনার সাইটের মূল কন্টেন্ট (হেডার, মেইন, ফুটার) এখন এই 'content-wrapper' div এর ভেতরে থাকবে।
-        যখন সাইডবার খুলবে, তখন এই পুরো অংশটি ডানদিকে সরে যাবে।
-    -->
     <div id="content-wrapper">
         <header>
             <div class="container">
                 <div id="branding">
                     <h1><a href="https://omarkgschool.com" target="_blank" rel="noopener">Omar Kindergarten School & Omar Garten Academy</a></h1>
-                    <!-- হেডার টেক্সট আপডেট করা হয়েছে -->
                     <h2><a href="index.html">ICT Portal By ALPCG</a></h2>
                 </div>
-                <!-- 
-                    সাইডবার খোলার জন্য হ্যামবার্গার আইকন বাটন।
-                    আপনার দেওয়া ডিজাইন অনুযায়ী 'btn_one' ক্লাসের মধ্যে এটি রাখা হয়েছে।
-                    এর অবস্থান CSS দ্বারা হেডারের বামদিকে সেট করা হবে।
-                -->
                 <div class="btn_one">
                     <label for="check">
                         <i class="fas fa-bars"></i>
@@ -244,30 +206,7 @@
                 <p class="footer-note">এই পোর্টালটি শিক্ষার্থীদের আইসিটি শিক্ষাকে আরও সহজ ও কার্যকর করার লক্ষ্যে তৈরি করা হয়েছে।</p>
             </div>
         </footer>
-    </div> <!-- End of content-wrapper -->
-
+    </div>
     <script src="js/index.js?v=20250527-2"></script>
-    <script>
-        // Inline script to ensure loading screen is hidden
-        const localLoadingScreen = document.getElementById('loading-screen');
-        const hideLocalLoadingScreen = () => {
-            if (localLoadingScreen) {
-                localLoadingScreen.classList.add('hidden');
-                // Ensure pointer events are re-enabled if they were disabled by the loading screen
-                document.body.style.pointerEvents = 'auto';
-            }
-        };
-
-        // Hide immediately if DOM is already loaded
-        if (document.readyState === 'complete' || document.readyState === 'interactive') {
-            hideLocalLoadingScreen();
-        } else {
-            // Otherwise, hide when DOM is ready
-            document.addEventListener('DOMContentLoaded', hideLocalLoadingScreen);
-            // Fallback: hide after a short delay in case DOMContentLoaded is missed or delayed
-            window.addEventListener('load', hideLocalLoadingScreen);
-            setTimeout(hideLocalLoadingScreen, 4000); // Increased fallback time slightly
-        }
-    </script>
 </body>
 </html>
