@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- টাইটেল আপডেট করা হয়েছে -->
+    <title>টপিক ২: ভেরিয়েবল ও ডেটা টাইপ - ICT Portal by ALPCG</title>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/index.css?v=20250527-2">
+    <!-- Poppins ফন্টটি আপনার বিদ্যমান ফন্টগুলোর সাথে যোগ করা হয়েছে -->
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:wght@400;700&family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* এই পেজের জন্য নির্দিষ্ট কিছু স্টাইল - মডিউল ১ এর মতোই থাকবে */
+        .module-content-area {
+            background-color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 102, 204, 0.08);
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .module-content-area h1,
+        .module-content-area h2,
+        .module-content-area h3 {
+            color: #2d4966;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .module-content-area p {
+            font-family: 'Tiro Bangla', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4e6d8c;
+        }
+        .module-content-area ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 15px;
+            color: #4e6d8c;
+        }
+        .module-content-area ul li {
+            margin-bottom: 8px;
+            font-family: 'Tiro Bangla', sans-serif;
+            font-size: 1.05rem;
+        }
+        .code-example {
+            background-color: #f0f8ff;
+            border: 1px solid #cce0ff;
+            border-left: 5px solid #4d94ff;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #333;
+            white-space: pre-wrap;
+        }
+        .back-button-container, .next-button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        /* কোড এডিটর এবং আউটপুট স্টাইল */
+        .code-editor-container {
+            margin-top: 30px;
+            margin-bottom: 25px;
+            background-color: #f8fcfd;
+            border: 1px solid #d9edf7;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+        }
+        #python-code-input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #cce0ff;
+            border-radius: 8px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 1rem;
+            background-color: #f0f8ff;
+            color: #333;
+            resize: vertical;
+            min-height: 150px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        #run-code-btn-module {
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+        }
+        #python-output-module, #error-output-module {
+            background-color: #eaf6ff;
+            border: 1px solid #b3d9ff;
+            border-left: 5px solid #4d94ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #2d4966;
+            white-space: pre-wrap;
+        }
+        #error-output-module {
+            border-left: 5px solid #c62828;
+            background-color: #ffe6e6;
+            color: #c62828;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        নতুন সংযোজন: লোডিং স্ক্রিন।
+        এটি <body> ট্যাগের একদম শুরুতেই যোগ করা হয়েছে।
+    -->
+    <div id="loading-screen">
+        <div class="loader"></div>
+        <p>লোড হচ্ছে... অনুগ্রহ করে অপেক্ষা করুন</p>
+    </div>
+
+    <!-- 
+        আপনার দেওয়া ডিজাইন অনুযায়ী সাইডবার টগল করার জন্য একটি হিডেন চেক-বক্স।
+        এটি CSS দ্বারা সাইডবার নিয়ন্ত্রণ করবে।
+        এটি <body> ট্যাগের ঠিক পরেই, লোডিং স্ক্রিনের পরে যোগ করা হয়েছে।
+    -->
+    <input type="checkbox" id="check">
+
+    <!-- 
+        আপনার দেওয়া নতুন ডিজাইনের 'sidebar_menu' এর কাঠামো।
+        লোগো, ক্লোজ বাটন, মেনু লিঙ্ক এবং সোশ্যাল মিডিয়া লিঙ্ক সহ।
+        আপনার সাইটের লিঙ্কগুলো (যেমন index.html, python_course_landing.html) এখানে আপডেট করা হয়েছে।
+        এই ফাইলটি যেহেতু 'python_modules' ফোল্ডারের ভিতরে আছে, তাই লিঙ্কগুলোতে '../' ব্যবহার করা হয়েছে।
+    -->
+    <div class="sidebar_menu">
+        <div class="logo">
+            <a href="../index.html">ICT Portal By ALPCG</a>
+            <!-- 
+                এখানে আপনি চাইলে একটি লোগো ইমেজও যোগ করতে পারেন:
+                <img src="path/to/your/logo.png" alt="Portal Logo">
+            -->
+        </div>
+        <div class="btn_two">
+            <label for="check">
+                <i class="fas fa-times"></i>
+            </label>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><i class="fas fa-home"></i><a href="../index.html" class="sidebar-link">হোম</a></li>
+                <li><i class="fas fa-python"></i><a href="../python_course_landing.html" class="sidebar-link">পাইথন কোর্স</a></li>
+                <!-- 
+                    আপনার প্রয়োজন অনুযায়ী এখানে অন্যান্য মডিউলের লিঙ্ক যোগ করতে পারেন।
+                    উদাহরণ: <li><i class="fas fa-file-code"></i><a href="python_module_1_intro.html" class="sidebar-link">মডিউল ১: পরিচিতি</a></li>
+                -->
+                <li><i class="fas fa-info-circle"></i><a href="#" class="sidebar-link">আমাদের সম্পর্কে</a></li>
+                <li><i class="fas fa-envelope"></i><a href="#" class="sidebar-link">যোগাযোগ</a></li>
+            </ul>
+        </div>
+        <div class="social_media">
+            <ul>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 
+        আপনার সাইটের মূল কন্টেন্ট (হেডার, মেইন, ফুটার) এখন এই 'content-wrapper' div এর ভেতরে থাকবে।
+        যখন সাইডবার খুলবে, তখন এই পুরো অংশটি ডানদিকে সরে যাবে।
+    -->
+    <div id="content-wrapper">
+        <header>
+            <div class="container">
+                <div id="branding">
+                    <h1><a href="https://omarkgschool.com" target="_blank" rel="noopener">Omar Kindergarten School & Omar Garten Academy</a></h1>
+                    <!-- হেডার টেক্সট আপডেট করা হয়েছে -->
+                    <h2><a href="../index.html">ICT Portal By ALPCG</a></h2>
+                </div>
+                <!-- 
+                    সাইডবার খোলার জন্য হ্যামবার্গার আইকন বাটন।
+                    আপনার দেওয়া ডিজাইন অনুযায়ী 'btn_one' ক্লাসের মধ্যে এটি রাখা হয়েছে।
+                    এর অবস্থান CSS দ্বারা হেডারের বামদিকে সেট করা হবে।
+                -->
+                <div class="btn_one">
+                    <label for="check">
+                        <i class="fas fa-bars"></i>
+                    </label>
+                </div>
+                <nav></nav>
+            </div>
+        </header>
+
+        <main>
+            <section id="module-detail-section">
+                <div class="container">
+                    <div class="module-content-area">
+                        <h1>টপিক ২: ভেরিয়েবল ও ডেটা টাইপ</h1>
+                        <p class="section-description">কম্পিউটারে তথ্য সংরক্ষণ করার জাদু!</p>
+
+                        <h2>ভেরিয়েবল কী?</h2>
+                        <p>**ভেরিয়েবল (Variable)** হলো প্রোগ্রামিংয়ের একটি খুব গুরুত্বপূর্ণ ধারণা। সহজ ভাষায়, একটি ভেরিয়েবলকে আপনি একটি খালি বাক্স বা কন্টেইনারের মতো ভাবতে পারেন, যেখানে আপনি কোনো তথ্য (যেমন: আপনার নাম, বয়স, পরীক্ষার নম্বর) সংরক্ষণ করে রাখতে পারেন। যখন আপনার সেই তথ্যের প্রয়োজন হয়, তখন আপনি শুধু সেই বাক্সটির নাম ধরে ডাকেন।</p>
+                        <p>এই বাক্সগুলোর নাম আমরা নিজেরা দিতে পারি, যেমন `name`, `age`, `score` ইত্যাদি। পাইথনে ভেরিয়েবল তৈরি করা খুবই সহজ। আপনি শুধু একটি নাম দেবেন এবং তাতে একটি মান (= অ্যাসাইনমেন্ট অপারেটর ব্যবহার করে) রাখবেন।</p>
+
+                        <h3>ভেরিয়েবল কিভাবে তৈরি করবেন?</h3>
+                        <p>ভেরিয়েবল তৈরি করতে কোনো বিশেষ কমান্ডের প্রয়োজন হয় না। শুধু একটি নাম দিন এবং `=` চিহ্ন ব্যবহার করে একটি মান অ্যাসাইন করুন:</p>
+                        <div class="code-example">
+                            <pre><code># This is how you create a variable in Python
+student_name = "Rahim Ahmed" # A variable named student_name holds the text "Rahim Ahmed"
+student_age = 15             # A variable named student_age holds the number 15
+exam_score = 85.5            # A variable named exam_score holds the decimal number 85.5
+
+print(student_name)
+print(student_age)
+print(exam_score)</code></pre>
+                        </div>
+                        <p>উপরে `student_name`, `student_age`, `exam_score` - এগুলো সবই ভেরিয়েবল। `print()` ফাংশন ব্যবহার করে আমরা এই ভেরিয়েবলগুলোর ভেতরের মান দেখতে পারি।</p>
+                        <p>**মনে রাখবেন:** ভেরিয়েবলের নাম ছোট হাতের অক্ষর, সংখ্যা এবং আন্ডারস্কোর (`_`) দিয়ে তৈরি হতে পারে। তবে সংখ্যা দিয়ে শুরু করা যাবে না এবং কোনো স্পেস দেওয়া যাবে না।</p>
+
+                        <h2>ডেটা টাইপস (Data Types)</h2>
+                        <p>ভেরিয়েবলে আমরা যে তথ্যগুলো রাখি, সেগুলো বিভিন্ন ধরনের হতে পারে। যেমন: সংখ্যা, টেক্সট, সত্য/মিথ্যা ইত্যাদি। প্রোগ্রামিংয়ে এই বিভিন্ন ধরনের তথ্যকে **ডেটা টাইপ (Data Type)** বলা হয়। পাইথন স্বয়ংক্রিয়ভাবে ডেটা টাইপ বুঝে নেয়, আপনাকে আলাদা করে বলে দিতে হয় না, যা পাইথনকে আরও সহজ করে তোলে।</p>
+
+                        <h3>১. ইন্টিজার (Integer - পূর্ণসংখ্যা)</h3>
+                        <p>এটি পূর্ণসংখ্যা (whole numbers) সংরক্ষণের জন্য ব্যবহৃত হয়, যেমন: 10, -5, 1000। দশমিক বা ভগ্নাংশ থাকে না।</p>
+                        <div class="code-example">
+                            <pre><code># Integer examples
+number_of_students = 45
+year = 2025
+roll_number = 7
+
+print(type(number_of_students)) # Output will show <class 'int'>
+print(year)</code></pre>
+                        </div>
+                        <p>`type()` ফাংশন ব্যবহার করে আপনি একটি ভেরিয়েবলের ডেটা টাইপ দেখতে পারেন।</p>
+
+                        <h3>২. ফ্লোট (Float - দশমিক সংখ্যা)</h3>
+                        <p>এটি দশমিক বা ভগ্নাংশযুক্ত সংখ্যা (decimal numbers) সংরক্ষণের জন্য ব্যবহৃত হয়, যেমন: 3.14, 99.9, -0.5।</p>
+                        <div class="code-example">
+                            <pre><code># Float examples
+pi_value = 3.14159
+average_score = 78.5
+price = 19.99
+
+print(type(pi_value)) # Output will show <class 'float'>
+print(average_score)</code></pre>
+                        </div>
+
+                        <h3>৩. স্ট্রিং (String - টেক্সট)</h3>
+                        <p>এটি অক্ষর বা টেক্সট সংরক্ষণের জন্য ব্যবহৃত হয়। স্ট্রিং সবসময় সিঙ্গেল কোটেশন (`'`) বা ডাবল কোটেশন (`"`) এর মধ্যে লেখা হয়।</p>
+                        <div class="code-example">
+                            <pre><code># String examples
+greeting = "Hello, Python Learners!"
+my_school = 'Okgs High School'
+message = "Today is a great day."
+
+print(type(greeting)) # Output will show <class 'str'>
+print(my_school)
+print(message)</code></pre>
+                        </div>
+
+                        <h3>৪. বুলিয়ান (Boolean - সত্য/মিথ্যা)</h3>
+                        <p>এই ডেটা টাইপ শুধুমাত্র দুটি মান ধারণ করে: `True` (সত্য) অথবা `False` (মিথ্যা)। এটি সাধারণত শর্ত পরীক্ষা করার জন্য ব্যবহৃত হয়।</p>
+                        <div class="code-example">
+                            <pre><code># Boolean examples
+is_raining = True
+is_sunny = False
+has_passed = True
+
+print(type(is_raining)) # Output will show <class 'bool'>
+print(is_sunny)</code></pre>
+                        </div>
+
+                        <h2>কেন ডেটা টাইপ জানা জরুরি?</h2>
+                        <p>যদিও পাইথন নিজে ডেটা টাইপ বুঝে নেয়, তবুও আপনার এটি বোঝা দরকার কারণ, বিভিন্ন ডেটা টাইপের উপর বিভিন্ন অপারেশন (কাজ) করা যায়। যেমন, আপনি দুটি সংখ্যা যোগ করতে পারবেন, কিন্তু একটি সংখ্যা আর একটি টেক্সটকে সরাসরি যোগ করতে পারবেন না।</p>
+                        <div class="code-example">
+                            <pre><code># Example of different operations on different data types
+num1 = 10
+num2 = 20
+result_sum = num1 + num2 # Works: 30
+
+text1 = "Hello"
+text2 = " World"
+result_concat = text1 + text2 # Works: "Hello World"
+
+# This will cause an error (TypeError)
+# mixed_result = num1 + text1 
+# print(mixed_result) </code></pre>
+                        </div>
+
+                        <h3>এখানে আপনার কোড প্র্যাকটিস করুন!</h3>
+                        <p>ভেরিয়েবল তৈরি করুন এবং বিভিন্ন ডেটা টাইপের মান অ্যাসাইন করে `print()` ফাংশন দিয়ে সেগুলোর মান ও টাইপ দেখুন।</p>
+                        <div class="code-editor-container">
+                            <textarea id="python-code-input" rows="10" placeholder="# Try creating different types of variables here!&#10;# Example:&#10;my_name = 'Your Name'&#10;my_age = 16&#10;my_height = 5.7&#10;is_student = True&#10;&#10;print(f'Name: {my_name}, Type: {type(my_name)}')&#10;print(f'Age: {my_age}, Type: {type(my_age)}')&#10;print(f'Height: {my_height}, Type: {type(my_height)}')&#10;print(f'Is student: {is_student}, Type: {type(is_student)}')&#10;&#10;# Try reassigning a value:&#10;my_age = 17&#10;print(f'New age: {my_age}')"></textarea>
+                            <button id="run-code-btn-module" class="btn-primary">কোড রান করুন</button>
+                        </div>
+
+                        <h3>আউটপুট:</h3>
+                        <div id="python-output-module" class="code-example">
+                            আপনার কোডের ফলাফল এখানে দেখা যাবে।
+                        </div>
+                        <h3>এরর:</h3>
+                        <div id="error-output-module" class="error-text"></div>
+
+                    </div>
+
+                    <div class="navigation-buttons">
+                        <button onclick="window.history.back()" class="btn-secondary"> < মডিউল তালিকায় ফিরে যান</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p>কপিরাইট © <span id="current-year"></span> । সর্বস্বত্ব সংরক্ষিত । <a href="mailto:fahadbinmamun06@gmail.com">Fahad Bin Mamun</a></p>
+                <p class="footer-note">এই পোর্টালটি শিক্ষার্থীদের আইসিটি শিক্ষাকে আরও সহজ ও কার্যকর করার লক্ষ্যে তৈরি করা হয়েছে।</p>
+            </div>
+        </footer>
+    </div> <!-- End of content-wrapper -->
+
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+    <script src="../js/index.js?v=20250527-2"></script>
+</body>
+</html>
