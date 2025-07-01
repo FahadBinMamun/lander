@@ -1,0 +1,666 @@
+/* General Resets and Base Styles */
+/* Poppins ফন্টটি আপনার বিদ্যমান ফন্টগুলোর সাথে যোগ করা হয়েছে */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif; /* ডিফল্ট ফন্ট আপনার সাইটের জন্য */
+}
+
+body {
+  line-height: 1.6;
+  background-color: #e6f0ff; /* হালকা নীল ব্যাকগ্রাউন্ড */
+  color: #2b2b2b;
+  overflow-x: hidden; /* অনুভূমিক স্ক্রলবার লুকানো */
+  position: relative; /* সাইডবার ওভারলের জন্য */
+}
+
+/* সাইডবার খোলা হলে কন্টেন্টকে ডিম করার জন্য ওভারলে */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* আধা-স্বচ্ছ কালো */
+    z-index: 998; /* সাইডবারের নিচে, কন্টেন্টের উপরে */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+}
+
+#check:checked ~ body::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+  overflow: hidden;
+  padding: 0 20px;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Montserrat', sans-serif; /* হেডারের জন্য ফন্ট */
+  font-weight: 700;
+  color: #385a7c; /* গাঢ় নীল হেডারের রঙ */
+}
+
+p {
+    font-family: 'Tiro Bangla', sans-serif; /* বাংলা টেক্সটের জন্য ফন্ট */
+    font-size: 1.05rem; /* রিডেবিলিটির জন্য ফন্ট সাইজ */
+}
+
+a {
+  text-decoration: none;
+  color: #385a7c;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #2d4966;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.error-text {
+  color: #c62828; /* এরর মেসেজের জন্য লাল রঙ */
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+/* Header */
+header {
+  background: #f0f8ff; /* হালকা নীল সাদা ব্যাকগ্রাউন্ড */
+  padding: 20px 0;
+  border-bottom: 1px solid #cce0ff;
+  box-shadow: 0 4px 8px rgba(0, 102, 204, 0.1);
+  text-align: center; /* ব্র্যান্ডিং সেন্টারে */
+  position: relative; /* বাটন পজিশিং এর জন্য */
+}
+
+header #branding h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+header #branding h1 a {
+  color: #2d4966;
+}
+
+/* ICT Portal By ALPCG টেক্সটের জন্য নতুন স্টাইল */
+header #branding h2 a {
+  font-family: 'Poppins', sans-serif; /* Poppins ফন্ট ব্যবহার করা হয়েছে */
+  font-size: 1.15rem; /* ফন্ট সাইজ ছোট করা হয়েছে */
+  font-weight: 600; /* ফন্ট ওয়েট বাড়ানো হয়েছে */
+  letter-spacing: 0.5px; /* অক্ষরের মধ্যে সামান্য ফাঁকা স্থান */
+  color: #4e6d8c; /* গাঢ় নীল */
+  transition: color 0.3s ease;
+  display: block; /* নিশ্চিত করে যে এটি একটি নতুন লাইন শুরু করে */
+  margin-top: 5px; /* স্কুলের নামের সাথে সামান্য ব্যবধান */
+}
+
+header #branding h2 a:hover {
+  color: #385a7c; /* হোভারে একটু গাঢ় রঙ */
+}
+
+
+/* Nav (যদি ভবিষ্যতে লিঙ্ক যোগ করেন) */
+header nav {
+  margin-top: 10px;
+}
+
+/* Hero Section */
+#hero {
+  background: linear-gradient(to right, #e6f0ff, #cce0ff); /* সফট নীল গ্রেডিয়েন্ট */
+  padding: 60px 0;
+  text-align: center;
+  border-bottom: 1px solid #a3cfff;
+  box-shadow: 0 5px 15px rgba(0, 102, 204, 0.15);
+  margin-bottom: 30px;
+}
+
+#hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #2d4966;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #4e6d8c;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Primary Button Style */
+.btn-primary {
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(to right, #66b2ff, #4d94ff); /* নীল গ্রেডিয়েন্ট */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 10px rgba(0, 102, 204, 0.1);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to right, #5ca3ff, #3a89ff);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 102, 204, 0.2);
+}
+
+/* Section Description */
+.section-description {
+    font-size: 1.1rem;
+    color: #4e6d8c;
+    margin-bottom: 25px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+}
+
+/* Class Selection Section & Category Selection Section - Unified Styles */
+#class-selection, #category-selection-section {
+  padding: 40px 0;
+  background-color: transparent;
+  text-align: center;
+}
+
+#class-selection h3, #category-selection-section h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #385a7c;
+}
+
+.class-cards-container, .category-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+/* Card Base Style */
+.class-card, .category-card {
+  background-color: #ffffff; /* সাদা ব্যাকগ্রাউন্ড */
+  border: 1px solid #cce0ff;
+  border-radius: 15px;
+  padding: 35px;
+  width: 280px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.class-card:hover, .category-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 102, 204, 0.2);
+  border-color: #87cefa;
+}
+
+/* Icons within cards */
+.class-icon, .category-icon {
+    font-size: 3.5rem;
+    color: #66b2ff;
+    margin-bottom: 15px;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.class-card:hover .class-icon, .category-card:hover .category-icon {
+    color: #4d94ff;
+}
+
+.class-card h4, .category-card h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #2d4966;
+}
+
+.class-card p, .category-card p {
+  font-size: 1rem;
+  color: #4e6d8c;
+}
+
+/* Exam List Section */
+#exam-list-section {
+  padding: 40px 0;
+  background-color: transparent;
+  text-align: center;
+}
+
+#exam-list-section h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #385a7c;
+}
+
+#exam-buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 650px;
+  margin: 0 auto 30px auto;
+}
+
+.exam-button {
+  display: block;
+  width: 100%;
+  padding: 18px 25px;
+  font-size: 1.2rem;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(to right, #4d94ff, #66b2ff);
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 12px rgba(0, 102, 204, 0.2);
+}
+
+.exam-button:hover {
+  background: linear-gradient(to right, #3a89ff, #5ca3ff);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 102, 204, 0.3);
+}
+
+.exam-button:active {
+  transform: translateY(0);
+}
+
+/* Secondary Button Style (Back Buttons) */
+.btn-secondary {
+  display: block;
+  margin: 30px auto 0 auto;
+  padding: 12px 25px;
+  font-size: 1.05rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: #385a7c;
+  background-color: #e6f2ff;
+  border: 1px solid #cce0ff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.btn-secondary:hover {
+  background-color: #d8ecff;
+  box-shadow: 0 5px 12px rgba(0, 102, 204, 0.1);
+  border-color: #a3cfff;
+}
+
+/* Footer */
+footer {
+  background: #e6f0ff;
+  color: #4e6d8c;
+  text-align: center;
+  padding: 25px 0;
+  margin-top: 50px;
+  border-top: 1px solid #cce0ff;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+footer p {
+  margin: 5px 0;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+.footer-note {
+    font-size: 0.85em;
+    color: #6a8ba8;
+}
+
+
+/* নতুন সাইডবার ডিজাইনের CSS */
+#check {
+  display: none; /* চেক-বক্সটি লুকানো হয়েছে */
+}
+
+/* Main content wrapper */
+#content-wrapper {
+  position: relative; /* z-index এর জন্য */
+  z-index: 1; /* সাইডবারের নিচে থাকবে */
+  transition: margin-left 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* উন্নত স্প্রিং-ইফেক্ট অ্যানিমেশন */
+}
+
+/* sidebar_menu এর জন্য স্টাইল */
+.sidebar_menu {
+  position: fixed;
+  height: 100vh;
+  width: 280px;
+  left: -280px; /* বামপাশে লুকানো থাকবে */
+  background: linear-gradient(180deg, #f0f8ff 0%, #e6f0ff 100%); /* হালকা নীল গ্রেডিয়েন্ট */
+  box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.3); /* গাঢ় শ্যাডো */
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* উন্নত স্প্রিং-ইফেক্ট অ্যানিমেশন */
+  z-index: 1000; /* কন্টেন্টের উপরে থাকবে */
+  border-right: 1px solid #cce0ff; /* সাইডবারের ডানদিকে হালকা বর্ডার */
+}
+
+.sidebar_menu .logo {
+  position: relative;
+  width: 100%;
+  height: 70px; /* লোগো এরিয়া একটু বড় করা হয়েছে */
+  background-color: #385a7c; /* আপনার থিমের গাঢ় নীল রঙ */
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3); /* লোগোর নিচে গাঢ় শ্যাডো */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* লোগোর নিচে হালকা সাদা বর্ডার */
+}
+
+.sidebar_menu .logo a {
+  color: #fff; /* সাদা রঙ */
+  font-size: 26px; /* ফন্ট সাইজ একটু বড় করা হয়েছে */
+  font-weight: 600; /* ফন্ট ওয়েট বাড়ানো হয়েছে */
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif; /* আপনার থিমের ফন্ট */
+  letter-spacing: 1px; /* অক্ষরের মধ্যে ফাঁকা স্থান */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* হালকা টেক্সট শ্যাডো */
+}
+
+.sidebar_menu .menu {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.sidebar_menu .menu li {
+  margin-top: 6px;
+  padding: 14px 20px;
+  transition: background-color 0.3s ease, border-left 0.3s ease, transform 0.2s ease; /* হোভারের জন্য ট্রানজিশন যোগ করা হয়েছে */
+}
+
+.sidebar_menu .menu i {
+  color: #385a7c; /* আপনার থিমের গাঢ় নীল আইকন রঙ */
+  font-size: 20px;
+  padding-right: 12px; /* আইকন ও টেক্সটের মধ্যে ফাঁকা স্থান বাড়ানো হয়েছে */
+  transition: color 0.3s ease;
+}
+
+.sidebar_menu .menu a {
+  color: #4e6d8c; /* আপনার থিমের টেক্সট রঙ */
+  font-size: 1.1rem;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif; /* আপনার থিমের ফন্ট */
+  transition: color 0.3s ease;
+}
+
+.sidebar_menu .menu li:hover {
+  background-color: #d8ecff; /* হোভারে গাঢ় হালকা নীল ব্যাকগ্রাউন্ড */
+  border-left: 5px solid #4d94ff; /* হোভারে নীল বর্ডার */
+  box-shadow: 0 0 8px rgba(0, 102, 204, 0.2); /* হোভারে একটু বেশি শ্যাডো */
+  transform: translateX(5px); /* হোভারে হালকা স্লাইড ইফেক্ট */
+}
+
+.sidebar_menu .menu li:hover i,
+.sidebar_menu .menu li:hover a {
+    color: #2d4966; /* হোভারে গাঢ় নীল রঙ */
+}
+
+.sidebar_menu .social_media {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 20px;
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  gap: 15px; /* আইকনগুলোর মধ্যে ফাঁকা স্থান বাড়ানো হয়েছে */
+}
+
+.sidebar_menu .social_media a {
+    color: #4d94ff; /* আপনার থিমের নীল রঙ */
+    font-size: 24px; /* ফন্ট সাইজ একটু বড় করা হয়েছে */
+    opacity: 0.9;
+    transition: all 0.3s ease-in-out; /* উন্নত হোভার অ্যানিমেশন */
+}
+
+.sidebar_menu .social_media a:hover {
+    opacity: 1;
+    transform: translateY(-3px) scale(1.1); /* হোভারে স্লাইড এবং স্কেল ইফেক্ট */
+}
+
+/* ওপেন বাটন (Hamburger Icon) */
+.btn_one i {
+  color: #385a7c; /* আপনার থিমের গাঢ় নীল রঙ */
+  font-size: 32px; /* আইকন সাইজ একটু বড় করা হয়েছে */
+  font-weight: 700;
+  position: absolute;
+  left: 20px; /* বামদিক থেকে অবস্থান */
+  top: 25px; /* উপর থেকে অবস্থান */
+  cursor: pointer;
+  opacity: 1;
+  transition: all 0.3s ease; /* অ্যানিমেশন উন্নত করা হয়েছে */
+  z-index: 999; /* সাইডবার এবং ওভারলের নিচে, কিন্তু হেডারের উপরে */
+}
+
+/* ক্লোজ বাটন */
+.sidebar_menu .btn_two i {
+  font-size: 28px; /* আইকন সাইজ একটু বড় করা হয়েছে */
+  line-height: 60px;
+  position: absolute;
+  right: 25px; /* ডানদিকে অবস্থান (সাইডবারের ভেতরে) */
+  top: 0;
+  cursor: pointer;
+  opacity: 0; /* প্রাথমিকভাবে লুকানো */
+  transition: all 0.3s ease; /* অ্যানিমেশন উন্নত করা হয়েছে */
+  color: #fff; /* সাদা রঙ */
+}
+
+/* হোভার এফেক্ট */
+.btn_one i:hover {
+  font-size: 31px;
+  color: #2d4966;
+}
+.btn_two i:hover {
+  font-size: 27px;
+}
+
+/* চেক-বক্স চেক হলে সাইডবার খোলে */
+#check:checked ~ .sidebar_menu {
+  left: 0; /* বামদিক থেকে ভিতরে আসে */
+}
+
+/* চেক-বক্স চেক হলে বাটনগুলো লুকানো/দৃশ্যমান হয় */
+#check:checked ~ #content-wrapper .btn_one i { /* #content-wrapper এর ভেতরে btn_one */
+  opacity: 0; /* হ্যামবার্গার আইকন লুকানো */
+  pointer-events: none; /* যাতে ক্লিক না করা যায় */
+}
+#check:checked ~ .sidebar_menu .btn_two i {
+  opacity: 1; /* ক্লোজ আইকন দৃশ্যমান */
+}
+
+/* সাইডবার খোলা হলে কন্টেন্ট সরবে */
+#check:checked ~ #content-wrapper {
+    margin-left: 280px; /* সাইডবারের প্রস্থের সমান ডানদিকে সরবে */
+}
+/* সাইডবার খোলা অবস্থায় কন্টেন্টে ক্লিক করা বন্ধ করতে এটি ব্যবহার করুন */
+#check:checked ~ #content-wrapper main,
+#check:checked ~ #content-wrapper footer {
+    pointer-events: none;
+}
+#check:checked ~ #content-wrapper header .container #branding,
+#check:checked ~ #content-wrapper header .container nav {
+    pointer-events: none;
+}
+
+
+/* লোডিং স্ক্রিন স্টাইল */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #e6f0ff; /* হালকা নীল ব্যাকগ্রাউন্ড */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* সবকিছুর উপরে */
+    opacity: 1;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+#loading-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; /* হিডেন হলে ক্লিক ইভেন্ট ব্লক করবে */
+}
+
+.loader {
+    border: 8px solid #cce0ff; /* হালকা নীল বর্ডার */
+    border-top: 8px solid #4d94ff; /* নীল রঙে টপ বর্ডার (স্পিনার ইফেক্ট) */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite; /* স্পিন অ্যানিমেশন */
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#loading-screen p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: #385a7c;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header #branding h1 {
+    font-size: 1.6rem;
+  }
+  #hero h2 {
+    font-size: 2rem;
+  }
+  #hero p {
+    font-size: 1rem;
+  }
+  .class-cards-container, .category-cards-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  .class-card, .category-card {
+    width: 90%;
+    max-width: 350px;
+    padding: 25px;
+  }
+  .class-card h4, .category-card h4 {
+      font-size: 1.3rem;
+  }
+  .class-icon, .category-icon {
+      font-size: 2.8rem;
+  }
+  #class-selection h3, #category-selection-section h3, #exam-list-section h3 {
+    font-size: 1.7rem;
+  }
+  .exam-button {
+    font-size: 1.05rem;
+    padding: 14px 20px;
+  }
+  .btn-secondary {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+  }
+  
+  /* মোবাইল স্ক্রিনে সাইডবার খোলা হলে কন্টেন্ট সরবে না */
+  #check:checked ~ #content-wrapper {
+      margin-left: 0; 
+  }
+  .sidebar_menu {
+      width: 250px; /* ছোট স্ক্রিনের জন্য সাইডবারের প্রস্থ */
+      left: -250px;
+  }
+  #check:checked ~ .sidebar_menu {
+      left: 0;
+  }
+  /* ছোট স্ক্রিনে ক্লোজ বাটন বামদিকে আনা হয়েছে */
+  .sidebar_menu .btn_two i {
+    right: unset; 
+    left: 15px; 
+  }
+
+  /* অ্যান্ড্রয়েড ওভারলে ফিক্স: স্কুল নাম লোগোর নিচে চলে যাওয়া */
+  header #branding {
+      position: relative; /* নিশ্চিত করে যে z-index কাজ করবে */
+      z-index: 10; /* Sidebar এর z-index 1000 এর নিচে, কিন্তু অন্যান্য header content এর উপরে */
+      /* আপনি চাইলে এখানে ব্যাকগ্রাউন্ড যোগ করে দেখতে পারেন যদি সমস্যা থাকে */
+      /* background-color: #f0f8ff; */ 
+      padding-left: 60px; /* বাম বাটন এর জন্য স্থান */
+      text-align: center; /* মাঝখানে রাখার জন্য */
+  }
+  /* Android ফিক্সের জন্য h2 এর ফন্ট সাইজ সামঞ্জস্য করা হয়েছে */
+  header #branding h2 a {
+      font-size: 1.0rem; /* মোবাইল স্ক্রিনে ফন্ট সাইজ আরও ছোট করা হয়েছে */
+      letter-spacing: 0.2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 95%;
+    padding: 0 10px;
+  }
+  #hero h2 {
+    font-size: 1.6rem;
+  }
+  #hero p {
+    font-size: 0.95rem;
+  }
+  .section-description {
+      font-size: 1rem;
+  }
+  .class-card, .category-card {
+    width: 100%;
+  }
+  .btn_one i {
+    font-size: 25px;
+    left: 15px;
+    top: 20px;
+  }
+  .sidebar_menu {
+    width: 220px; /* খুব ছোট স্ক্রিনের জন্য সাইডবারের প্রস্থ */
+    left: -220px;
+  }
+  .sidebar_menu .btn_two i {
+    left: 10px; /* খুব ছোট স্ক্রিনে ক্লোজ বাটন বামদিকে */
+    font-size: 20px;
+  }
+}
