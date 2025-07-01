@@ -10,14 +10,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* এই পেজের জন্য নির্দিষ্ট কিছু স্টাইল */
         #course-list-section .container {
             background-color: #ffffff;
             padding: 40px 30px;
             border-radius: 15px;
             box-shadow: 0 8px 20px rgba(0, 102, 204, 0.08);
             margin-bottom: 30px;
-            text-align: center; /* হেডিং এবং বর্ণনা সেন্টারে থাকবে */
+            text-align: center;
         }
         #course-list-section h2 {
             color: #2d4966;
@@ -33,12 +32,12 @@
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
             padding: 20px 0;
-            max-width: 1000px; /* কার্ডের জন্য সর্বোচ্চ প্রস্থ */
-            margin: 0 auto; /* মাঝখানে আনতে */
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .course-module-card {
-            background-color: #f0f8ff; /* হালকা নীল ব্যাকগ্রাউন্ড */
+            background-color: #f0f8ff;
             border-radius: 15px;
             padding: 25px;
             text-align: center;
@@ -49,7 +48,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 180px; /* কার্ডের ন্যূনতম উচ্চতা */
+            min-height: 180px;
         }
 
         .course-module-card:hover {
@@ -65,7 +64,7 @@
         }
 
         .course-module-card:hover .module-icon {
-            color: #66b2ff; /* হোভারে আইকনের রঙ পরিবর্তন */
+            color: #66b2ff;
         }
 
         .course-module-card h4 {
@@ -87,13 +86,12 @@
             margin-top: 40px;
         }
 
-        /* Responsive adjustments */
         @media (max-width: 768px) {
             #course-list-section .container {
                 padding: 25px 15px;
             }
             .course-module-cards {
-                grid-template-columns: 1fr; /* ছোট স্ক্রিনে একক কলাম */
+                grid-template-columns: 1fr;
             }
             .course-module-card {
                 padding: 20px;
@@ -111,16 +109,13 @@
     </style>
 </head>
 <body>
-    <!-- লোডিং স্ক্রিন -->
     <div id="loading-screen">
         <div class="loader"></div>
         <p>লোড হচ্ছে... অনুগ্রহ করে অপেক্ষা করুন</p>
     </div>
 
-    <!-- সাইডবার টগল করার জন্য হিডেন চেক-বক্স -->
     <input type="checkbox" id="check">
 
-    <!-- সাইডবার মেনু -->
     <div class="sidebar_menu">
         <div class="logo">
             <a href="index.html">ICT Portal By ALPCG</a>
@@ -149,7 +144,6 @@
         </div>
     </div>
 
-    <!-- মূল কন্টেন্ট র‍্যাপার -->
     <div id="content-wrapper">
         <header>
             <div class="container">
@@ -191,20 +185,6 @@
                             <p>ওয়েবপেজে টেক্সটকে সুন্দরভাবে সাজান: বোল্ড, ইটালিক, হেডিং ইত্যাদি!</p>
                         </div>
                         
-                        <!-- ভবিষ্যতে আরও মডিউল যোগ করুন -->
-                        <!--
-                        <div class="course-module-card" onclick="location.href='html_modules/html_module_4_links.html'">
-                            <i class="fas fa-link module-icon"></i>
-                            <h4>টপিক ৪: লিঙ্ক ও ইমেজ</h4>
-                            <p>ওয়েবপেজে লিঙ্ক এবং ছবি যোগ করার পদ্ধতি!</p>
-                        </div>
-                        <div class="course-module-card" onclick="location.href='html_modules/html_module_5_lists_tables.html'">
-                            <i class="fas fa-list module-icon"></i>
-                            <h4>টপিক ৫: লিস্ট ও টেবিল</h4>
-                            <p>তথ্যকে সুসংগঠিতভাবে উপস্থাপন করুন: লিস্ট ও টেবিলের ব্যবহার!</p>
-                        </div>
-                        -->
-
                     </div>
 
                     <div class="back-button-container">
@@ -219,32 +199,7 @@
                 <p>কপিরাইট © <span id="current-year"></span> । সর্বস্বত্ব সংরক্ষিত । <a href="mailto:fahadbinmamun06@gmail.com">Fahad Bin Mamun</a></p>
             </div>
         </footer>
-    </div> <!-- End of content-wrapper -->
-
+    </div>
     <script src="js/index.js?v=20250527-2"></script>
-    <script>
-        // এই নির্দিষ্ট পেজের জন্য লোডিং স্ক্রিন লুকানোর লজিক
-        document.addEventListener('DOMContentLoaded', function() {
-            const loadingScreen = document.getElementById('loading-screen');
-            if (loadingScreen) {
-                loadingScreen.classList.add('hidden');
-                document.body.style.pointerEvents = 'auto'; // নিশ্চিত করুন pointer-events চালু হয়েছে
-            }
-        });
-        window.addEventListener('load', function() {
-            const loadingScreen = document.getElementById('loading-screen');
-            if (loadingScreen) {
-                loadingScreen.classList.add('hidden');
-                document.body.style.pointerEvents = 'auto';
-            }
-        });
-        setTimeout(function() {
-            const loadingScreen = document.getElementById('loading-screen');
-            if (loadingScreen) {
-                loadingScreen.classList.add('hidden');
-                document.body.style.pointerEvents = 'auto';
-            }
-        }, 3500); // 3.5 সেকেন্ড পর লুকান (ফলব্যাক)
-    </script>
 </body>
 </html>
