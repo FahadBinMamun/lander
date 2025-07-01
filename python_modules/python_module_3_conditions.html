@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- টাইটেল আপডেট করা হয়েছে -->
+    <title>টপিক ৩: গাণিতিক অপারেশনস এবং ইনপুট/আউটপুট - ICT Portal by ALPCG</title>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/index.css?v=20250527-2">
+    <!-- Poppins ফন্টটি আপনার বিদ্যমান ফন্টগুলোর সাথে যোগ করা হয়েছে -->
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:wght@400;700&family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* এই পেজের জন্য নির্দিষ্ট কিছু স্টাইল - আগের মডিউলগুলোর মতোই থাকবে */
+        .module-content-area {
+            background-color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 102, 204, 0.08);
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .module-content-area h1,
+        .module-content-area h2,
+        .module-content-area h3 {
+            color: #2d4966;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .module-content-area p {
+            font-family: 'Tiro Bangla', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4e6d8c;
+        }
+        .module-content-area ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 15px;
+            color: #4e6d8c;
+        }
+        .module-content-area ul li {
+            margin-bottom: 8px;
+            font-family: 'Tiro Bangla', sans-serif;
+            font-size: 1.05rem;
+        }
+        .code-example {
+            background-color: #f0f8ff;
+            border: 1px solid #cce0ff;
+            border-left: 5px solid #4d94ff;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #333;
+            white-space: pre-wrap;
+        }
+        .back-button-container, .next-button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        /* কোড এডিটর এবং আউটপুট স্টাইল */
+        .code-editor-container {
+            margin-top: 30px;
+            margin-bottom: 25px;
+            background-color: #f8fcfd;
+            border: 1px solid #d9edf7;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+        }
+        #python-code-input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #cce0ff;
+            border-radius: 8px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 1rem;
+            background-color: #f0f8ff;
+            color: #333;
+            resize: vertical;
+            min-height: 150px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        #run-code-btn-module {
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+        }
+        #python-output-module, #error-output-module {
+            background-color: #eaf6ff;
+            border: 1px solid #b3d9ff;
+            border-left: 5px solid #4d94ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #2d4966;
+            white-space: pre-wrap;
+        }
+        #error-output-module {
+            border-left: 5px solid #c62828;
+            background-color: #ffe6e6;
+            color: #c62828;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        নতুন সংযোজন: লোডিং স্ক্রিন।
+        এটি <body> ট্যাগের একদম শুরুতেই যোগ করা হয়েছে।
+    -->
+    <div id="loading-screen">
+        <div class="loader"></div>
+        <p>লোড হচ্ছে... অনুগ্রহ করে অপেক্ষা করুন</p>
+    </div>
+
+    <!-- 
+        আপনার দেওয়া ডিজাইন অনুযায়ী সাইডবার টগল করার জন্য একটি হিডেন চেক-বক্স।
+        এটি CSS দ্বারা সাইডবার নিয়ন্ত্রণ করবে।
+        এটি <body> ট্যাগের ঠিক পরেই, লোডিং স্ক্রিনের পরে যোগ করা হয়েছে।
+    -->
+    <input type="checkbox" id="check">
+
+    <!-- 
+        আপনার দেওয়া নতুন ডিজাইনের 'sidebar_menu' এর কাঠামো।
+        লোগো, ক্লোজ বাটন, মেনু লিঙ্ক এবং সোশ্যাল মিডিয়া লিঙ্ক সহ।
+        আপনার সাইটের লিঙ্কগুলো (যেমন index.html, python_course_landing.html) এখানে আপডেট করা হয়েছে।
+        এই ফাইলটি যেহেতু 'python_modules' ফোল্ডারের ভিতরে আছে, তাই লিঙ্কগুলোতে '../' ব্যবহার করা হয়েছে।
+    -->
+    <div class="sidebar_menu">
+        <div class="logo">
+            <a href="../index.html">ICT Portal By ALPCG</a>
+            <!-- 
+                এখানে আপনি চাইলে একটি লোগো ইমেজও যোগ করতে পারেন:
+                <img src="path/to/your/logo.png" alt="Portal Logo">
+            -->
+        </div>
+        <div class="btn_two">
+            <label for="check">
+                <i class="fas fa-times"></i>
+            </label>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><i class="fas fa-home"></i><a href="../index.html" class="sidebar-link">হোম</a></li>
+                <li><i class="fas fa-python"></i><a href="../python_course_landing.html" class="sidebar-link">পাইথন কোর্স</a></li>
+                <!-- 
+                    আপনার প্রয়োজন অনুযায়ী এখানে অন্যান্য মডিউলের লিঙ্ক যোগ করতে পারেন।
+                    উদাহরণ: <li><i class="fas fa-file-code"></i><a href="python_module_1_intro.html" class="sidebar-link">মডিউল ১: পরিচিতি</a></li>
+                -->
+                <li><i class="fas fa-info-circle"></i><a href="#" class="sidebar-link">আমাদের সম্পর্কে</a></li>
+                <li><i class="fas fa-envelope"></i><a href="#" class="sidebar-link">যোগাযোগ</a></li>
+            </ul>
+        </div>
+        <div class="social_media">
+            <ul>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 
+        আপনার সাইটের মূল কন্টেন্ট (হেডার, মেইন, ফুটার) এখন এই 'content-wrapper' div এর ভেতরে থাকবে।
+        যখন সাইডবার খুলবে, তখন এই পুরো অংশটি ডানদিকে সরে যাবে।
+    -->
+    <div id="content-wrapper">
+        <header>
+            <div class="container">
+                <div id="branding">
+                    <h1><a href="https://omarkgschool.com" target="_blank" rel="noopener">Omar Kindergarten School & Omar Garten Academy</a></h1>
+                    <!-- হেডার টেক্সট আপডেট করা হয়েছে -->
+                    <h2><a href="../index.html">ICT Portal By ALPCG</a></h2>
+                </div>
+                <!-- 
+                    সাইডবার খোলার জন্য হ্যামবার্গার আইকন বাটন।
+                    আপনার দেওয়া ডিজাইন অনুযায়ী 'btn_one' ক্লাসের মধ্যে এটি রাখা হয়েছে।
+                    এর অবস্থান CSS দ্বারা হেডারের বামদিকে সেট করা হবে।
+                -->
+                <div class="btn_one">
+                    <label for="check">
+                        <i class="fas fa-bars"></i>
+                    </label>
+                </div>
+                <nav></nav>
+            </div>
+        </header>
+
+        <main>
+            <section id="module-detail-section">
+                <div class="container">
+                    <div class="module-content-area">
+                        <h1>টপিক ৩: গাণিতিক অপারেশনস এবং ইনপুট/আউটপুট</h1>
+                        <p class="section-description">কম্পিউটারকে দিয়ে হিসাব করানো এবং ব্যবহারকারীর সাথে কথা বলা!</p>
+
+                        <h2>১. পাইথনে গাণিতিক অপারেশনস (Arithmetic Operations in Python)</h2>
+                        <p>আপনারা যেমন সাধারণ গণিতে যোগ, বিয়োগ, গুণ, ভাগ করেন, পাইথনও সেই কাজগুলো খুব সহজে করতে পারে। প্রোগ্রামিংয়ে এই কাজগুলোকে **গাণিতিক অপারেশনস (Arithmetic Operations)** বলা হয়। পাইথনে এই অপারেশনগুলো করার জন্য কিছু বিশেষ চিহ্ন বা অপারেটর ব্যবহার করা হয়।</p>
+
+                        <h3>সাধারণ গাণিতিক অপারেটরসমূহ:</h3>
+                        <ul>
+                            <li>**যোগ (Addition):** `+` চিহ্ন ব্যবহার করে দুটি সংখ্যা যোগ করা হয়।</li>
+                            <li>**বিয়োগ (Subtraction):** `-` চিহ্ন ব্যবহার করে দুটি সংখ্যার বিয়োগফল বের করা হয়।</li>
+                            <li>**গুণ (Multiplication):** `*` (asterisk) চিহ্ন ব্যবহার করে দুটি সংখ্যা গুণ করা হয়।</li>
+                            <li>**ভাগ (Division):** `/` (forward slash) চিহ্ন ব্যবহার করে ভাগ করা হয়। এর ফলাফল সবসময় দশমিক সংখ্যা (float) হবে, এমনকি যদি ভাগফল পূর্ণসংখ্যা হয়।</li>
+                            <li>**ফ্লোর ডিভিশন (Floor Division):** `//` (double forward slash) চিহ্ন ব্যবহার করে ভাগ করা হয়, তবে এর ফলাফল সবসময় পূর্ণসংখ্যা হবে (দশমিকের পরের অংশ বাদ দেওয়া হবে)।</li>
+                            <li>**মডিউলাস (Modulus):** `%` (percent) চিহ্ন ব্যবহার করে ভাগের **অবশিষ্ট** বের করা হয়। এটি Odd/Even সংখ্যা নির্ণয়ে খুব কাজে লাগে।</li>
+                            <li>**পাওয়ার (Exponentiation):** `**` (double asterisk) চিহ্ন ব্যবহার করে একটি সংখ্যার পাওয়ার বা ঘাত বের করা হয়। যেমন: $2^3$ লেখার জন্য `2 ** 3`।</li>
+                        </ul>
+
+                        <h3>উদাহরণ: গাণিতিক অপারেটর ব্যবহার</h3>
+                        <div class="code-example">
+                            <pre><code># Basic Arithmetic Operations
+num1 = 10
+num2 = 3
+
+# Addition
+sum_result = num1 + num2
+print(f"Sum: {sum_result}") # Output: Sum: 13
+
+# Subtraction
+sub_result = num1 - num2
+print(f"Subtraction: {sub_result}") # Output: Subtraction: 7
+
+# Multiplication
+mul_result = num1 * num2
+print(f"Multiplication: {mul_result}") # Output: Multiplication: 30
+
+# Division
+div_result = num1 / num2
+print(f"Division: {div_result}") # Output: Division: 3.3333333333333335
+
+# Floor Division (gives integer part of division)
+floor_div_result = num1 // num2
+print(f"Floor Division: {floor_div_result}") # Output: Floor Division: 3
+
+# Modulus (gives the remainder of division)
+mod_result = num1 % num2
+print(f"Modulus (Remainder): {mod_result}") # Output: Modulus (Remainder): 1
+
+# Exponentiation (Power)
+power_result = num1 ** num2 # 10 to the power of 3 (10 * 10 * 10)
+print(f"Power: {power_result}") # Output: Power: 1000
+
+# Operator Precedence (Order of Operations)
+# Python follows BODMAS/PEMDAS rule (Parentheses, Exponents, Multiplication/Division, Addition/Subtraction)
+calc_result = 5 + 3 * 2 # Multiplication first (3*2=6), then Addition (5+6=11)
+print(f"Calculation Result: {calc_result}") # Output: Calculation Result: 11
+
+calc_result_with_parentheses = (5 + 3) * 2 # Parentheses first (5+3=8), then Multiplication (8*2=16)
+print(f"Calculation Result with Parentheses: {calc_result_with_parentheses}") # Output: Calculation Result with Parentheses: 16
+</code></pre>
+                        </div>
+
+                        <h2>২. ইনপুট/আউটপুট (Input/Output - I/O)</h2>
+                        <p>একটি প্রোগ্রাম শুধু কিছু তথ্য দেখিয়ে দিলে তা সবসময় কার্যকর হয় না। অনেক সময় প্রোগ্রামকে ব্যবহারকারীর কাছ থেকে তথ্য নিতে হয় (যেমন: আপনার নাম কী? আপনার বয়স কত?) এবং সেই তথ্য নিয়ে কাজ করে ফলাফল দেখাতে হয়। প্রোগ্রামিংয়ে এই প্রক্রিয়াকে **ইনপুট/আউটপুট (Input/Output)** বলা হয়।</p>
+
+                        <h3>ইনপুট নেওয়া (`input()` ফাংশন):</h3>
+                        <p>পাইথনে ব্যবহারকারীর কাছ থেকে তথ্য নেওয়ার জন্য আমরা `input()` ফাংশনটি ব্যবহার করি। যখন `input()` ফাংশনটি চলে, তখন প্রোগ্রাম ব্যবহারকারীর কাছ থেকে টাইপ করার জন্য অপেক্ষা করে। ব্যবহারকারী কিছু লিখে এন্টার চাপলে, সেই লেখাটি `input()` ফাংশনের ফলাফল হিসেবে ফেরত আসে।</p>
+                        <p>**গুরুত্বপূর্ণ:** `input()` ফাংশন সবসময় **স্ট্রিং (string)** টাইপের তথ্য ফেরত দেয়, এমনকি যদি আপনি সংখ্যাও টাইপ করেন। তাই, যদি আপনি সংখ্যা নিয়ে কাজ করতে চান, তাহলে এটিকে ইন্টিজার (`int()`) বা ফ্লোটে (`float()`) রূপান্তর (convert) করে নিতে হবে।</p>
+
+                        <h3>উদাহরণ: ব্যবহারকারীর কাছ থেকে ইনপুট নেওয়া</h3>
+                        <div class="code-example">
+                            <pre><code># Taking input from the user
+user_name = input("Enter your name: ") # Prompts user to type their name
+print(f"Hello, {user_name}! Welcome to Python.")
+
+# Taking numerical input
+# Input is always string, so convert it to int or float
+user_age_str = input("Enter your age: ")
+user_age = int(user_age_str) # Converts string to integer
+
+print(f"You are {user_age} years old.")
+print(f"In 5 years, you will be {user_age + 5} years old.")
+
+# Taking float input
+price_str = input("Enter the price of an item: ")
+price = float(price_str) # Converts string to float
+quantity = int(input("Enter the quantity: ")) # Can directly convert if sure of integer input
+
+total_cost = price * quantity
+print(f"The total cost is: {total_cost} BDT.")
+</code></pre>
+                        </div>
+                        <p>এই মডিউলে শেখা গাণিতিক অপারেটর এবং ইনপুট/আউটপুট ফাংশন ব্যবহার করে এখন আপনি আরও ইন্টারেক্টিভ প্রোগ্রাম তৈরি করতে পারবেন!</p>
+
+
+                        <h3>এখানে আপনার কোড প্র্যাকটিস করুন!</h3>
+                        <p>কিছু গাণিতিক হিসাব করে দেখুন অথবা ব্যবহারকারীর কাছ থেকে নাম ও দুটি সংখ্যা নিয়ে সেগুলোর যোগফল প্রিন্ট করার একটি প্রোগ্রাম লিখুন।</p>
+                        <div class="code-editor-container">
+                            <textarea id="python-code-input" rows="10" placeholder="# Try calculating area of a rectangle!&#10;length = float(input('Enter length: '))&#10;width = float(input('Enter width: '))&#10;area = length * width&#10;print(f'The area of the rectangle is: {area}')&#10;&#10;# Or calculate BMI:&#10;# weight_kg = float(input('Enter your weight in KG: '))&#10;# height_m = float(input('Enter your height in meters: '))&#10;# bmi = weight_kg / (height_m ** 2)&#10;# print(f'Your BMI is: {bmi}')"></textarea>
+                            <button id="run-code-btn-module" class="btn-primary">কোড রান করুন</button>
+                        </div>
+
+                        <h3>আউটপুট:</h3>
+                        <div id="python-output-module" class="code-example">
+                            আপনার কোডের ফলাফল এখানে দেখা যাবে।
+                        </div>
+                        <h3>এরর:</h3>
+                        <div id="error-output-module" class="error-text"></div>
+
+                    </div>
+
+                    <div class="navigation-buttons">
+                        <button onclick="window.history.back()" class="btn-secondary"> < মডিউল তালিকায় ফিরে যান</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p>কপিরাইট © <span id="current-year"></span> । সর্বস্বত্ব সংরক্ষিত । <a href="mailto:fahadbinmamun06@gmail.com">Fahad Bin Mamun</a></p>
+                <p class="footer-note">এই পোর্টালটি শিক্ষার্থীদের আইসিটি শিক্ষাকে আরও সহজ ও কার্যকর করার লক্ষ্যে তৈরি করা হয়েছে।</p>
+            </div>
+        </footer>
+    </div> <!-- End of content-wrapper -->
+
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+    <script src="../js/index.js?v=20250527-2"></script>
+</body>
+</html>
