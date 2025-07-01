@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML বেসিক কোর্স - ICT Portal by ALPCG</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css?v=20250527-2">
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:wght@400;700&family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* এই পেজের জন্য নির্দিষ্ট কিছু স্টাইল */
+        #course-list-section .container {
+            background-color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 102, 204, 0.08);
+            margin-bottom: 30px;
+            text-align: center; /* হেডিং এবং বর্ণনা সেন্টারে থাকবে */
+        }
+        #course-list-section h2 {
+            color: #2d4966;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        #course-list-section .section-description {
+            margin-bottom: 30px;
+        }
+
+        .course-module-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 20px 0;
+            max-width: 1000px; /* কার্ডের জন্য সর্বোচ্চ প্রস্থ */
+            margin: 0 auto; /* মাঝখানে আনতে */
+        }
+
+        .course-module-card {
+            background-color: #f0f8ff; /* হালকা নীল ব্যাকগ্রাউন্ড */
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 102, 204, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 180px; /* কার্ডের ন্যূনতম উচ্চতা */
+        }
+
+        .course-module-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 102, 204, 0.2);
+        }
+
+        .course-module-card .module-icon {
+            font-size: 3.5rem;
+            color: #385a7c;
+            margin-bottom: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .course-module-card:hover .module-icon {
+            color: #66b2ff; /* হোভারে আইকনের রঙ পরিবর্তন */
+        }
+
+        .course-module-card h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            color: #385a7c;
+            margin-bottom: 10px;
+        }
+
+        .course-module-card p {
+            font-family: 'Tiro Bangla', sans-serif;
+            font-size: 1.05rem;
+            color: #4e6d8c;
+            line-height: 1.6;
+        }
+
+        .back-button-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            #course-list-section .container {
+                padding: 25px 15px;
+            }
+            .course-module-cards {
+                grid-template-columns: 1fr; /* ছোট স্ক্রিনে একক কলাম */
+            }
+            .course-module-card {
+                padding: 20px;
+            }
+            .course-module-card .module-icon {
+                font-size: 3rem;
+            }
+            .course-module-card h4 {
+                font-size: 1.2rem;
+            }
+            .course-module-card p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- লোডিং স্ক্রিন -->
+    <div id="loading-screen">
+        <div class="loader"></div>
+        <p>লোড হচ্ছে... অনুগ্রহ করে অপেক্ষা করুন</p>
+    </div>
+
+    <!-- সাইডবার টগল করার জন্য হিডেন চেক-বক্স -->
+    <input type="checkbox" id="check">
+
+    <!-- সাইডবার মেনু -->
+    <div class="sidebar_menu">
+        <div class="logo">
+            <a href="index.html">ICT Portal By ALPCG</a>
+        </div>
+        <div class="btn_two">
+            <label for="check">
+                <i class="fas fa-times"></i>
+            </label>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><i class="fas fa-home"></i><a href="index.html" class="sidebar-link">হোম</a></li>
+                <li><i class="fas fa-python"></i><a href="python_course_landing.html" class="sidebar-link">পাইথন কোর্স</a></li>
+                <li><i class="fas fa-code"></i><a href="html_course_landing.html" class="sidebar-link">HTML বেসিক</a></li>
+                <li><i class="fas fa-info-circle"></i><a href="#" class="sidebar-link">আমাদের সম্পর্কে</a></li>
+                <li><i class="fas fa-envelope"></i><a href="#" class="sidebar-link">যোগাযোগ</a></li>
+            </ul>
+        </div>
+        <div class="social_media">
+            <ul>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </ul>
+        </div>
+    </div>
+
+    <!-- মূল কন্টেন্ট র‍্যাপার -->
+    <div id="content-wrapper">
+        <header>
+            <div class="container">
+                <div id="branding">
+                    <h1><a href="https://omarkgschool.com" target="_blank" rel="noopener">Omar Kindergarten School & Omar Garten Academy</a></h1>
+                    <h2><a href="index.html">ICT Portal By ALPCG</a></h2>
+                </div>
+                <div class="btn_one">
+                    <label for="check">
+                        <i class="fas fa-bars"></i>
+                    </label>
+                </div>
+                <nav></nav>
+            </div>
+        </header>
+
+        <main>
+            <section id="course-list-section">
+                <div class="container">
+                    <h2>HTML এর প্রাথমিক ধাপসমূহ</h2>
+                    <p class="section-description">নিচের পাঠগুলো থেকে আপনার পছন্দের পাঠ বেছে নিন এবং HTML এর মজার জগতে প্রবেশ করুন!</p>
+
+                    <div class="course-module-cards">
+                        <div class="course-module-card" onclick="location.href='html_modules/html_module_1_structure.html'">
+                            <i class="fas fa-code module-icon"></i>
+                            <h4>টপিক ১: HTML পরিচিতি ও কাঠামো</h4>
+                            <p>ওয়েবপেজ তৈরির মূল ভিত্তি: HTML কী এবং এর মৌলিক কাঠামো কেমন?</p>
+                        </div>
+
+                        <div class="course-module-card" onclick="location.href='html_modules/html_module_2_tags_attributes.html'">
+                            <i class="fas fa-tags module-icon"></i>
+                            <h4>টপিক ২: ট্যাগ ও অ্যাট্রিবিউট</h4>
+                            <p>HTML এর বিল্ডিং ব্লক: ট্যাগ ও অ্যাট্রিবিউটের ব্যবহার!</p>
+                        </div>
+
+                        <div class="course-module-card" onclick="location.href='html_modules/html_module_3_text_formatting.html'">
+                            <i class="fas fa-font module-icon"></i>
+                            <h4>টপিক ৩: টেক্সট ফরম্যাটিং</h4>
+                            <p>ওয়েবপেজে টেক্সটকে সুন্দরভাবে সাজান: বোল্ড, ইটালিক, হেডিং ইত্যাদি!</p>
+                        </div>
+                        
+                        <!-- ভবিষ্যতে আরও মডিউল যোগ করুন -->
+                        <!--
+                        <div class="course-module-card" onclick="location.href='html_modules/html_module_4_links.html'">
+                            <i class="fas fa-link module-icon"></i>
+                            <h4>টপিক ৪: লিঙ্ক ও ইমেজ</h4>
+                            <p>ওয়েবপেজে লিঙ্ক এবং ছবি যোগ করার পদ্ধতি!</p>
+                        </div>
+                        <div class="course-module-card" onclick="location.href='html_modules/html_module_5_lists_tables.html'">
+                            <i class="fas fa-list module-icon"></i>
+                            <h4>টপিক ৫: লিস্ট ও টেবিল</h4>
+                            <p>তথ্যকে সুসংগঠিতভাবে উপস্থাপন করুন: লিস্ট ও টেবিলের ব্যবহার!</p>
+                        </div>
+                        -->
+
+                    </div>
+
+                    <div class="back-button-container">
+                        <button onclick="window.history.back()" class="btn-secondary"> < ফিরে যান</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p>কপিরাইট © <span id="current-year"></span> । সর্বস্বত্ব সংরক্ষিত । <a href="mailto:fahadbinmamun06@gmail.com">Fahad Bin Mamun</a></p>
+            </div>
+        </footer>
+    </div> <!-- End of content-wrapper -->
+
+    <script src="js/index.js?v=20250527-2"></script>
+    <script>
+        // এই নির্দিষ্ট পেজের জন্য লোডিং স্ক্রিন লুকানোর লজিক
+        document.addEventListener('DOMContentLoaded', function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                loadingScreen.classList.add('hidden');
+                document.body.style.pointerEvents = 'auto'; // নিশ্চিত করুন pointer-events চালু হয়েছে
+            }
+        });
+        window.addEventListener('load', function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                loadingScreen.classList.add('hidden');
+                document.body.style.pointerEvents = 'auto';
+            }
+        });
+        setTimeout(function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                loadingScreen.classList.add('hidden');
+                document.body.style.pointerEvents = 'auto';
+            }
+        }, 3500); // 3.5 সেকেন্ড পর লুকান (ফলব্যাক)
+    </script>
+</body>
+</html>
